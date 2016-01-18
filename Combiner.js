@@ -4,7 +4,7 @@ var Combiner = function(jQuery, logger) {
 	this.logger = logger;
 	var that = this;
 	
-	this.combine = function(hallOfFameHeading, hallOfFamePlayers, fiftyGreatestHeading, fiftyGreatestPlayers) {
+	this.combine = function(hallOfFamePlayers, fiftyGreatestPlayers, mvps) {
 		var combinedPlayers = new Array();
 		
 		that.jQuery.each(fiftyGreatestPlayers, function(index, fiftyPlayer) {
@@ -36,6 +36,22 @@ var Combiner = function(jQuery, logger) {
 				combinedPlayers[hofPlayer.id].yearInductedInHof = hofPlayer.yearInducted;
 			}
 		});
+        
+		for (var key in mvps) {
+            // console.log(key);
+			if (combinedPlayers[key] === undefined) {
+				// console.log('adding to array MVP ' + mvps[key].name);
+				combinedPlayers[key] = {
+					'id' :  mvps[key].id,
+					'name' : mvps[key].name,
+					'position' : mvps[key].position,
+					'numberOfTimesMvp' : mvps[key].numberOfTimesMvp
+				};
+			} else {
+				// console.log('exists in array MVP ' + mvps[key].name);
+				combinedPlayers[key].numberOfTimesMvp = mvps[key].numberOfTimesMvp;
+			}
+		}
 		
 		that.logger.log('Combined', combinedPlayers);
 	};

@@ -15,3 +15,8 @@ retriever.retrieve('50_Greatest_Players_in_NBA_History',
 	'50 Greatest Players in NBA History',
 	new FiftyGreatestHelper($).mapTableOfPlayersToArray,
 	collector.assignFiftyGreatest);
+
+retriever.retrieve('NBA_Most_Valuable_Player_Award', 
+	'NBA Most Valuable Player Award', 
+	new MvpsHelper($).mapTableOfPlayersToArray,
+	collector.assignMvps);

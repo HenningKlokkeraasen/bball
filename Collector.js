@@ -11,6 +11,10 @@ var Collector = function(logger, combiner) {
 	this.fiftyGreatestHeading = '';
 	this.fiftyGreatestPlayers = [];
 	
+	this.hasMvps = false;
+	this.mvpsHeading = '';
+	this.mvps = [];
+    
 	var that = this;
 	
 	this.assignHallOfFamers = function(heading, arrayOfPlayerObjects) {
@@ -26,14 +30,21 @@ var Collector = function(logger, combiner) {
 		that.fiftyGreatestPlayers = arrayOfPlayerObjects;
 		that.notifyIfHaveAll();
 	};
+    
+    this.assignMvps = function(heading, arrayOfPlayerObjects) {
+        that.hasMvps = true;
+        that.mvpsHeading = heading;
+        that.mvps = arrayOfPlayerObjects;
+        that.notifyIfHaveAll();
+    }
 	
 	this.notifyIfHaveAll = function() {
 //		this.logger.log('Have HOF: ' + this.hasHallOfFamers);
 //		this.logger.log('Have 50G: ' + this.hasFiftyGreatest);
-		if (this.hasHallOfFamers && this.hasFiftyGreatest) {
+		if (this.hasHallOfFamers && this.hasFiftyGreatest && this.hasMvps) {
 //			this.logger.log(this.hallOfFameHeading, this.hallOfFamePlayers);
 //			this.logger.log(this.fiftyGreatestHeading, this.fiftyGreatestPlayers);
-			this.combiner.combine(this.hallOfFameHeading, this.hallOfFamePlayers, this.fiftyGreatestHeading, this.fiftyGreatestPlayers);
+			this.combiner.combine(this.hallOfFamePlayers, this.fiftyGreatestPlayers, this.mvps);
 		}
 	};
 };
