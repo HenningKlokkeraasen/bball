@@ -1,8 +1,10 @@
 
-var JsonGetter = function(jQuery) {
-	this.jQuery = jQuery;
-	
-	this.getJson = function(uri, callback) {
+class JsonGetter {
+    constructor(public jQuery) {
+        
+    }
+    
+    getJson(uri: string, callback: (data, textStatus, jQXhr) => any) {
 		this.jQuery.ajax({
 		    url: uri,
 		    dataType: 'jsonp',
@@ -10,5 +12,5 @@ var JsonGetter = function(jQuery) {
 				callback(data, textStatus, jqXhr);
 			}
 		});
-	};
-};
+    }
+}

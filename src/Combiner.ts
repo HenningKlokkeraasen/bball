@@ -1,13 +1,15 @@
+/// <reference path="Logger.ts" />
 
-var Combiner = function(jQuery, logger) {
-	this.jQuery = jQuery;
-	this.logger = logger;
-	var that = this;
+class Combiner {
+    constructor(public jQuery, public logger: Logger) {
+        
+    }
 	
-	this.combine = function(hallOfFamePlayers, fiftyGreatestPlayers, mvps) {
+    // TODO extract interfaces for these parameters
+	combine(hallOfFamePlayers, fiftyGreatestPlayers, mvps) {
 		var combinedPlayers = new Array();
 		
-		that.jQuery.each(fiftyGreatestPlayers, function(index, fiftyPlayer) {
+		this.jQuery.each(fiftyGreatestPlayers, function(index, fiftyPlayer) {
 			if (combinedPlayers[fiftyPlayer.id] === undefined) {
 //				console.log('adding to array 50G ' + fiftyPlayer.name);
 				combinedPlayers[fiftyPlayer.id] = {
@@ -22,7 +24,7 @@ var Combiner = function(jQuery, logger) {
 			}
 		});
 		
-		that.jQuery.each(hallOfFamePlayers, function(index, hofPlayer) {
+		this.jQuery.each(hallOfFamePlayers, function(index, hofPlayer) {
 			if (combinedPlayers[hofPlayer.id] === undefined) {
 //				console.log('adding to array HOF ' + hofPlayer.name);
 				combinedPlayers[hofPlayer.id] = {
@@ -53,6 +55,6 @@ var Combiner = function(jQuery, logger) {
 			}
 		}
 		
-		that.logger.log('Combined', combinedPlayers);
+		this.logger.log('Combined', combinedPlayers);
 	};
 };

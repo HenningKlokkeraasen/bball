@@ -1,12 +1,14 @@
 
-var HallOfFameHelper = function(jQuery) {
-	this.jQuery = jQuery;
-	var that = this;
-	
-	this.mapTableOfPlayersToArray = function(content) {
+class HallOfFameMapper {
+    constructor(public jQuery) {
+        
+    }
+    
+    mapTableOfPlayersToArray(content: string) {
 		var html = this.jQuery.parseHTML(content);
 		var arrayOfPlayerObjects = [];
-		
+        
+		var that = this
 		this.jQuery.each(html, function(i, child) {
 			if (that.jQuery(child).is('table.wikitable')) {
 				that.jQuery.each(that.jQuery(child).find('tr'), function(j, tr) {
@@ -34,5 +36,5 @@ var HallOfFameHelper = function(jQuery) {
 			}
 		});
 		return arrayOfPlayerObjects;
-	};
-};
+    }
+}

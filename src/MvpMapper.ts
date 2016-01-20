@@ -1,12 +1,14 @@
 
-var MvpsHelper = function(jQuery) {
-	this.jQuery = jQuery;
-	var that = this;
+class MvpMapper {
+    constructor(public jQuery) {
+        
+    }
 	
-	this.mapTableOfPlayersToArray = function(content) {
+	mapTableOfPlayersToArray(content: string) {
 		var html = this.jQuery.parseHTML(content);
 		var arrayOfPlayerObjects = new Array();
-		
+        
+		var that = this;
 		this.jQuery.each(html, function(i, child) {
 			if (that.jQuery(child).is('table.wikitable')) {
                 var tbody = that.jQuery(child).children()[0];

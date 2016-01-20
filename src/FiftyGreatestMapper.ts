@@ -1,13 +1,15 @@
 
-var FiftyGreatestHelper = function(jQuery) {
-	this.jQuery = jQuery;
-	var that = this;
-	
-	this.mapTableOfPlayersToArray = function(content) {
+class FiftyGreatestMapper {
+    constructor(public jQuery) {
+        
+    }
+    
+    mapTableOfPlayersToArray(content: string) {
 		var html = this.jQuery.parseHTML(content);
 		var arrayOfPlayerObjects = [];
 		var isVoters = true;
-		this.jQuery.each(html, function(i, child) {
+        var that = this;
+		that.jQuery.each(html, function(i, child) {
 			if (that.jQuery(child).is('table.wikitable')) {
 				if (that.jQuery(child).children().children().length == 51)
 				{
@@ -38,5 +40,5 @@ var FiftyGreatestHelper = function(jQuery) {
 			}
 		});
 		return arrayOfPlayerObjects;
-	};
-};
+    }
+}
