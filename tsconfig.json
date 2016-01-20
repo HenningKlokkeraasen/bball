@@ -5,16 +5,17 @@
     },
     "files": [
         "src/WikipediaGetter.ts",
-        "src/Retriever.ts",
+        "src/WikipediaHtmlExtractor.ts",
         "src/JsonGetter.ts",
         "src/Logger.ts",
         
-        "src/FiftyGreatestMapper.ts",
-        "src/HallOfFameMapper.ts",
-        "src/MvpMapper.ts",
+        "src/Mappers/FiftyGreatestMapper.ts",
+        "src/Mappers/HallOfFameMapper.ts",
+        "src/Mappers/MvpMapper.ts",
         
-        "src/Combiner.ts",
-        "src/Collector.ts",
+        "src/BballPlayerAccoladeArrayRetriever",
+        "src/BballPlayerAccoladeArrayCombiner.ts",
+        "src/BballPlayerAccoladeArrayCollector.ts",
         
         "src/App.ts",
         "src/Startup.ts"

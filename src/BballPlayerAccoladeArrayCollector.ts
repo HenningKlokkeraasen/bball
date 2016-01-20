@@ -1,41 +1,39 @@
 /// <reference path="Logger.ts"" />
-/// <reference path="Combiner.ts" />
+/// <reference path="BballPlayerAccoladeArrayCombiner.ts" />
+/// <reference path="Definitions.ts" />
 
-class Collector {
-    constructor(public logger: Logger, public combiner: Combiner) {
-        
-    }
-	
+class BballPlayerAccoladeArrayCollector {
 	hasHallOfFamers: boolean;
 	hallOfFameHeading: string;
-	hallOfFamePlayers: Array<any>;
+	hallOfFamePlayers: Array<HallOfFamePlayer>;
 	
 	hasFiftyGreatest: boolean;
 	fiftyGreatestHeading: string;
-	fiftyGreatestPlayers: Array<any>;
+	fiftyGreatestPlayers: Array<FiftyGreatestPlayer>;
 	
 	hasMvps: boolean;
 	mvpsHeading: string;
-	mvps: Array<any>;
+	mvps: Array<MvpPlayer>;
     
-    // TODO interface for player type
-	setHallOfFamerPlayers = (heading: string, arrayOfPlayerObjects: Array<any>) => {
+    constructor(public logger: Logger, public combiner: BballPlayerAccoladeArrayCombiner) {
+        
+    }
+	
+	setHallOfFamerPlayers = (heading: string, arrayOfPlayerObjects: Array<HallOfFamePlayer>) => {
 		this.hasHallOfFamers = true;
 		this.hallOfFameHeading = heading;
 		this.hallOfFamePlayers = arrayOfPlayerObjects;
 		this.notifyIfHaveAll();
-	};
+	}
 	
-    // TODO interface for player type
-	setFiftyGreatestPlayers = (heading, arrayOfPlayerObjects) => {
+	setFiftyGreatestPlayers = (heading: string, arrayOfPlayerObjects: Array<FiftyGreatestPlayer>) => {
 		this.hasFiftyGreatest = true;
 		this.fiftyGreatestHeading = heading;
 		this.fiftyGreatestPlayers = arrayOfPlayerObjects;
 		this.notifyIfHaveAll();
-	};
+	}
     
-    // TODO interface for player type
-    setMvpPlayers = (heading, arrayOfPlayerObjects) => {
+    setMvpPlayers = (heading: string, arrayOfPlayerObjects: Array<MvpPlayer>) => {
         this.hasMvps = true;
         this.mvpsHeading = heading;
         this.mvps = arrayOfPlayerObjects;
@@ -43,12 +41,8 @@ class Collector {
     }
 	
 	notifyIfHaveAll() {
-//		this.logger.log('Have HOF: ' + this.hasHallOfFamers);
-//		this.logger.log('Have 50G: ' + this.hasFiftyGreatest);
 		if (this.hasHallOfFamers && this.hasFiftyGreatest && this.hasMvps) {
-//			this.logger.log(this.hallOfFameHeading, this.hallOfFamePlayers);
-//			this.logger.log(this.fiftyGreatestHeading, this.fiftyGreatestPlayers);
 			this.combiner.combine(this.hallOfFamePlayers, this.fiftyGreatestPlayers, this.mvps);
 		}
-	};
-};
+	}
+}

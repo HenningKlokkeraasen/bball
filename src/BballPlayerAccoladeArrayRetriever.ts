@@ -1,12 +1,16 @@
 /// <reference path="WikipediaGetter.ts" />
+/// <reference path="Definitions.ts" />
 
-class Retriever {
+class BballPlayerAccoladeArrayRetriever {
     constructor(public wikipediaGetter: WikipediaGetter){
         
     }
     
-    // TODO interface for arrayOfPlayerObjects
-    retrieve(title: string, heading: string, mapFunc: (content: string) => Array<any>, callback: (heading: string, arrayOfPlayerObjects: Array<any>) => any) {
+    retrieve(
+        title: string, 
+        heading: string, 
+        mapFunc: (content: string) => Array<BballPlayerBase>, 
+        callback: (heading: string, arrayOfPlayerObjects: Array<BballPlayerBase>) => any) {
         this.wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl(title, function(content) {
 			var arrayOfPlayerObjects = mapFunc.call(null, content);
 			callback(heading, arrayOfPlayerObjects);

@@ -1,8 +1,8 @@
-/// <reference path="Retriever.ts" />
+/// <reference path="BballPlayerAccoladeArrayRetriever.ts" />
 /// <reference path="Definitions.ts" />
 
 class App {
-    constructor(public retriever: Retriever) {
+    constructor(public retriever: BballPlayerAccoladeArrayRetriever) {
         
     }
     
