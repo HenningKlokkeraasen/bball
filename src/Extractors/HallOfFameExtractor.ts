@@ -1,8 +1,8 @@
-/// <reference path="../WikipediaHtmlExtractor.ts" />
+/// <reference path="ExtractorHelper.ts" />
 /// <reference path="../Definitions.ts" />
 
-class HallOfFameMapper {
-    constructor(public jQuery, public htmlExtractor: WikipediaHtmlExtractor) {
+class HallOfFameExtractor {
+    constructor(public jQuery, public htmlExtractor: ExtractorHelper) {
         
     }
     

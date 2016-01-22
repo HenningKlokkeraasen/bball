@@ -1,8 +1,8 @@
-/// <reference path="../WikipediaHtmlExtractor.ts" />
+/// <reference path="ExtractorHelper.ts" />
 /// <reference path="../Definitions.ts" />
 
-class FiftyGreatestMapper {
-    constructor(public jQuery, public htmlExtractor: WikipediaHtmlExtractor) {
+class FiftyGreatestExtractor {
+    constructor(public jQuery, public htmlExtractor: ExtractorHelper) {
         
     }
     

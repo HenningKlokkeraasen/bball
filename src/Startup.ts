@@ -5,10 +5,10 @@
 /// <reference path="BballPlayerAccoladeArrayCombiner.ts" />
 /// <reference path="BballPlayerAccoladeArrayCollector.ts" />
 /// <reference path="BballPlayerAccoladeArrayRetriever.ts" />
-/// <reference path="WikipediaHtmlExtractor.ts" />
-/// <reference path="Mappers/HallOfFameMapper.ts" />
-/// <reference path="Mappers/FiftyGreatestMapper.ts" />
-/// <reference path="Mappers/MvpMapper.ts" />
+/// <reference path="Extractors/ExtractorHelper.ts" />
+/// <reference path="Extractors/HallOfFameExtractor.ts" />
+/// <reference path="Extractors/FiftyGreatestExtractor.ts" />
+/// <reference path="Extractors/MvpExtractor.ts" />
 /// <reference path="App.ts" />
 /// <reference path="Definitions.ts" />
 
@@ -18,10 +18,11 @@ var logger = new Logger();
 var combiner = new BballPlayerAccoladeArrayCombiner($, logger);
 var collector = new BballPlayerAccoladeArrayCollector(logger, combiner);
 var retriever = new BballPlayerAccoladeArrayRetriever(wikipediaGetter);
-var htmlExtractor = new WikipediaHtmlExtractor($);
-var hofMapper = new HallOfFameMapper($, htmlExtractor);
-var fgMapper = new FiftyGreatestMapper($, htmlExtractor);
-var mvpMapper = new MvpMapper($, htmlExtractor);
+var htmlExtractor = new ExtractorHelper($);
+var hofMapper = new HallOfFameExtractor($, htmlExtractor);
+var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
+var mvpMapper = new MvpExtractor($, htmlExtractor);
+var app = new App(retriever);
 
 var hofDef = {
     wikipediaPageDefinition : {
@@ -56,4 +57,4 @@ var defs = [
     mvpDef
 ];
 
-new App(retriever).run(defs);
+app.run(defs);

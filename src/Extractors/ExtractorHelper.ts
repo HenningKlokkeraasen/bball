@@ -1,5 +1,5 @@
 
-class WikipediaHtmlExtractor {
+class ExtractorHelper {
     constructor(public jQuery) {
         
     }
