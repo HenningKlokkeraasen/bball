@@ -16,7 +16,7 @@ class MvpExtractor {
                 var tbody = that.jQuery(child).children()[0];
                 var tr = that.jQuery(tbody).children()[0];
                 var cell = that.jQuery(tr).children()[0];
-                var text = cell.innerText
+                var text = cell.innerHTML;
                 if (text == 'Season')
                 {
                     that.jQuery.each(that.jQuery(child).find('tr'), function(j, tr) {
