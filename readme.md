@@ -10,7 +10,9 @@ Built with:
 - TypeScript
 
 Libraries:
-- jQuery 2.2.0
+- jQuery 2.2.0 (add under /libs)
+
+(also get the jquery.d.ts to get intellisense for $)
 
 Dev stack:
 - npm
@@ -21,7 +23,12 @@ Dev stack:
 
 How to compile:
 > tsc
+
 (from root folder)
 
 How to run:
 - open index.html in a browser, open console
+
+OR: How to compile and run, automated (on Windows)
+> run.cmd
+
