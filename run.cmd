@@ -32,4 +32,4 @@ call start firefox "file:///E:/Mine dokumenter/GitHub/bball/index.html" -jsconso
 
 
 
-exit
+@rem exit

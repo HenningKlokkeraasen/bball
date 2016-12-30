@@ -11,8 +11,7 @@ class App {
             this.retriever.retrieve(
                 element.wikipediaPageDefinition.titleInUrl, 
                 element.wikipediaPageDefinition.heading, 
-                element.mappingFunction,
-                element.notifyWhenDoneCallback);
+                element.mappingFunction);
         });
     }
 }

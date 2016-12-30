@@ -17,7 +17,7 @@ var wikipediaGetter = new WikipediaGetter($, jsonGetter);
 var logger = new Logger();
 var combiner = new BballPlayerAccoladeArrayCombiner($, logger);
 var collector = new BballPlayerAccoladeArrayCollector(logger, combiner);
-var retriever = new BballPlayerAccoladeArrayRetriever(wikipediaGetter);
+var retriever = new BballPlayerAccoladeArrayRetriever(wikipediaGetter, collector);
 var htmlExtractor = new ExtractorHelper($);
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);
 var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
@@ -29,8 +29,7 @@ var hofDef = {
         titleInUrl : 'List_of_players_in_the_Naismith_Memorial_Basketball_Hall_of_Fame',
         heading: 'List of players in the Naismith Memorial Basketball Hall of Fame'
     },
-    mappingFunction: hofMapper.mapTableOfPlayersToArray,
-    notifyWhenDoneCallback: collector.setHallOfFamerPlayers
+    mappingFunction: hofMapper.mapTableOfPlayersToArray
 }
 
 var fgDef = {
@@ -38,8 +37,7 @@ var fgDef = {
         titleInUrl : '50_Greatest_Players_in_NBA_History',
         heading: '50 Greatest Players in NBA History'
     },
-    mappingFunction: fgMapper.mapTableOfPlayersToArray,
-    notifyWhenDoneCallback: collector.setFiftyGreatestPlayers
+    mappingFunction: fgMapper.mapTableOfPlayersToArray
 }
 
 var mvpDef = {
@@ -47,9 +45,15 @@ var mvpDef = {
         titleInUrl : 'NBA_Most_Valuable_Player_Award',
         heading: 'NBA Most Valuable Player Award'
     },
-    mappingFunction: mvpMapper.mapTableOfPlayersToArray,
-    notifyWhenDoneCallback: collector.setMvpPlayers
+    mappingFunction: mvpMapper.mapTableOfPlayersToArray
 }
+
+var bunchOfPlayers = new Array<ListOfPlayersWithFlag>();
+bunchOfPlayers[hofDef.wikipediaPageDefinition.titleInUrl] = { hasBeenSet: false,  arrayOfPlayers: Array<BballPlayer>() };
+bunchOfPlayers[fgDef.wikipediaPageDefinition.titleInUrl] = { hasBeenSet: false,  arrayOfPlayers: Array<BballPlayer>() };
+bunchOfPlayers[mvpDef.wikipediaPageDefinition.titleInUrl] = { hasBeenSet: false,  arrayOfPlayers: Array<BballPlayer>() };
+
+collector.initiate(bunchOfPlayers)
 
 var defs = [
     hofDef,

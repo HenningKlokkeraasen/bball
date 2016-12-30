@@ -11,7 +11,7 @@ class MvpExtractor {
 		var arrayOfPlayerObjects = new Array();
         
 		var that = this;
-		this.jQuery.each(html, function(i, child) {
+		that.jQuery.each(html, function(i, child) {
 			if (that.jQuery(child).is('table.wikitable')) {
                 var tbody = that.jQuery(child).children()[0];
                 var tr = that.jQuery(tbody).children()[0];
@@ -31,7 +31,7 @@ class MvpExtractor {
 		return arrayOfPlayerObjects;
 	}
     
-    extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<MvpPlayer>) {
+    extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<BballPlayer>) {
         var firstCell = this.jQuery(tr).children()[0];
         var season = this.jQuery(firstCell).text();
         
@@ -46,9 +46,9 @@ class MvpExtractor {
         }
         else {
             arrayOfPlayerObjects[playerValues.id] = {
-                'name' : playerValues.name,
-                'position' : position,
-                'numberOfTimesMvp' : 1
+                name : playerValues.name,
+                position : position,
+                numberOfTimesMvp : 1
             };
         }
     }

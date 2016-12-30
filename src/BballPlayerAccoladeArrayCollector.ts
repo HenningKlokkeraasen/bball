@@ -3,46 +3,32 @@
 /// <reference path="Definitions.ts" />
 
 class BballPlayerAccoladeArrayCollector {
-	hasHallOfFamers: boolean;
-	hallOfFameHeading: string;
-	hallOfFamePlayers: Array<HallOfFamePlayer>;
-	
-	hasFiftyGreatest: boolean;
-	fiftyGreatestHeading: string;
-	fiftyGreatestPlayers: Array<FiftyGreatestPlayer>;
-	
-	hasMvps: boolean;
-	mvpsHeading: string;
-	mvps: Array<MvpPlayer>;
+	bunchOfPlayers = undefined;
     
     constructor(public logger: Logger, public combiner: BballPlayerAccoladeArrayCombiner) {
-        
+
     }
 	
-	setHallOfFamerPlayers = (heading: string, arrayOfPlayerObjects: Array<HallOfFamePlayer>) => {
-		this.hasHallOfFamers = true;
-		this.hallOfFameHeading = heading;
-		this.hallOfFamePlayers = arrayOfPlayerObjects;
-		this.notifyIfHaveAll();
-	}
-	
-	setFiftyGreatestPlayers = (heading: string, arrayOfPlayerObjects: Array<FiftyGreatestPlayer>) => {
-		this.hasFiftyGreatest = true;
-		this.fiftyGreatestHeading = heading;
-		this.fiftyGreatestPlayers = arrayOfPlayerObjects;
-		this.notifyIfHaveAll();
-	}
+    initiate = (bunchOfPlayers: Array<ListOfPlayersWithFlag>) => {
+        this.bunchOfPlayers = bunchOfPlayers;
+    }
     
-    setMvpPlayers = (heading: string, arrayOfPlayerObjects: Array<MvpPlayer>) => {
-        this.hasMvps = true;
-        this.mvpsHeading = heading;
-        this.mvps = arrayOfPlayerObjects;
+    setListOfPlayers = (key: string, arrayOfPlayers: Array<BballPlayer>) => {
+        this.bunchOfPlayers[key].arrayOfPlayers = arrayOfPlayers;
+        this.bunchOfPlayers[key].hasBeenSet = true;
         this.notifyIfHaveAll();
     }
-	
+    
 	notifyIfHaveAll() {
-		if (this.hasHallOfFamers && this.hasFiftyGreatest && this.hasMvps) {
-			this.combiner.combine(this.hallOfFamePlayers, this.fiftyGreatestPlayers, this.mvps);
-		}
+        var haveAll = true;
+		for (var key in bunchOfPlayers) {
+			if (!bunchOfPlayers[key].hasBeenSet) {
+                haveAll = false;
+            }
+        };
+        
+        if (haveAll) {
+            this.combiner.combine(this.bunchOfPlayers);
+        }
 	}
 }

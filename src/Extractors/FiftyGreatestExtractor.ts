@@ -31,7 +31,7 @@ class FiftyGreatestExtractor {
 		return arrayOfPlayerObjects;
     }
     
-    extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<FiftyGreatestPlayer>) {
+    extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<BballPlayer>) {
         var firstCell = this.jQuery(tr).children()[0];
         var playerValues = this.htmlExtractor.extractPlayerValuesFromLinkInCell(firstCell);
         
@@ -46,9 +46,9 @@ class FiftyGreatestExtractor {
         
         
         arrayOfPlayerObjects[playerValues.id] = {
-            'name' : playerValues.name,
-            'position' : position
-            
+            name : playerValues.name,
+            position : position,
+			isOnFiftyGreatesList: true
         };
         
     }

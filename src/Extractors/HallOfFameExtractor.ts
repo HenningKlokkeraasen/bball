@@ -11,7 +11,7 @@ class HallOfFameExtractor {
 		var arrayOfPlayerObjects = [];
         
 		var that = this
-		this.jQuery.each(html, function(i, child) {
+		that.jQuery.each(html, function(i, child) {
 			if (that.jQuery(child).is('table.wikitable')) {
                 
                 
@@ -31,7 +31,7 @@ class HallOfFameExtractor {
 		return arrayOfPlayerObjects;
     }
     
-    extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<HallOfFamePlayer>) {
+    extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<BballPlayer>) {
         var firstCell = this.jQuery(tr).children()[0];
         var year = this.jQuery(firstCell).text();
         
@@ -46,9 +46,9 @@ class HallOfFameExtractor {
         
         
         arrayOfPlayerObjects[playerValues.id] = {
-            'name' : playerValues.name,
-            'position' : position,
-            'yearInducted' : year
+            name : playerValues.name,
+            position : position,
+            yearInductedInHof : year,
         };
         
     }

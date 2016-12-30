@@ -6,40 +6,39 @@ class BballPlayerAccoladeArrayCombiner {
         
     }
     
-	combine(
-        hallOfFamePlayers: Array<HallOfFamePlayer>, 
-        fiftyGreatestPlayers: Array<FiftyGreatestPlayer>, 
-        mvps: Array<MvpPlayer>) {
-		var combinedPlayers = new Array();
-		
-		for (var key in fiftyGreatestPlayers) {
-			if (combinedPlayers[key] === undefined) {
-				combinedPlayers[key] = this.createNewCombinedPlayer(fiftyGreatestPlayers[key]);
-			}
-            combinedPlayers[key].isOnFiftyGreatestList = true;
-		};
-		
-		for (var key in hallOfFamePlayers) {
-			if (combinedPlayers[key] === undefined) {
-				combinedPlayers[key] = this.createNewCombinedPlayer(hallOfFamePlayers[key]);
-			}
-            combinedPlayers[key].yearInductedInHof = hallOfFamePlayers[key].yearInducted;
-		};
-        
-		for (var key in mvps) {
-			if (combinedPlayers[key] === undefined) {
-				combinedPlayers[key] = this.createNewCombinedPlayer(mvps[key]);
-			}
-            combinedPlayers[key].numberOfTimesMvp = mvps[key].numberOfTimesMvp;
-		}
+	combine(bunchOfPlayers: Array<ListOfPlayersWithFlag>) {
+        var combinedPlayers = new Array<BballPlayer>();
+        var that = this;
+        for (var bunchKey in bunchOfPlayers) {
+            var element = bunchOfPlayers[bunchKey];
+            for (var key in element.arrayOfPlayers) {
+                if (combinedPlayers[key] === undefined) {
+                    combinedPlayers[key] = this.createNewCombinedPlayer(element.arrayOfPlayers[key]);
+                }
+                else {
+                    that.setProperties(element.arrayOfPlayers[key], combinedPlayers[key])
+                }
+            };
+        };
 		
 		this.logger.log('Combined', combinedPlayers);
 	}
-	
-    createNewCombinedPlayer(entry: BballPlayerBase) {
-        return {
-            'name' : entry.name,
-            'position' : entry.position
+    
+    createNewCombinedPlayer(entry: BballPlayer) {
+        var newPlayer = {
+            name: entry.name,
+            position: entry.position
         };
+        this.setProperties(entry, newPlayer);
+        return newPlayer;
+    }
+
+    setProperties(from: BballPlayer, to: BballPlayer) {
+        if (from.isOnFiftyGreatesList)
+            to.isOnFiftyGreatesList = from.isOnFiftyGreatesList;
+        if (from.numberOfTimesMvp)
+            to.numberOfTimesMvp = from.numberOfTimesMvp;
+        if (from.yearInductedInHof)
+            to.yearInductedInHof = from.yearInductedInHof;
     }
 }
