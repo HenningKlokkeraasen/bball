@@ -1,10 +1,11 @@
 {
     "compilerOptions": {
         "removeComments": true,
-        "out": "public/app.js"
+        "out": "public/app.js",
+        "lib": ["dom", "es2015.promise", "es5"]
     },
     "files": [
-        "src/WikipediaGetter.ts",
+        "src/WikipediaIntegration/WikipediaGetter.ts",
         "src/JsonGetter.ts",
         "src/Logger.ts",
         
@@ -13,11 +14,8 @@
         "src/Extractors/MvpExtractor.ts",
         "src/Extractors/ExtractorHelper",
         
-        "src/BballPlayerAccoladeArrayRetriever",
         "src/BballPlayerAccoladeArrayCombiner.ts",
-        "src/BballPlayerAccoladeArrayCollector.ts",
         
-        "src/App.ts",
         "src/Startup.ts"
     ]
 }

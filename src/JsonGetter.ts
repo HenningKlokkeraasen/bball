@@ -1,16 +1,12 @@
-
 class JsonGetter {
-    constructor(public jQuery) {
-        
-    }
+    constructor(public jQuery) { }
     
-    getJson(uri: string, callback: (data, textStatus, jQXhr) => any) {
-		this.jQuery.ajax({
-		    url: uri,
-		    dataType: 'jsonp',
-			success: function(data, textStatus, jqXhr) {
-				callback(data, textStatus, jqXhr);
-			}
+    getJson(url: string) {
+		return new Promise<any>(function(resolve, reject) {
+			this.jQuery.ajax({
+				url: url,
+				dataType: 'jsonp'
+			}).done(resolve).fail(reject);
 		});
     }
 }

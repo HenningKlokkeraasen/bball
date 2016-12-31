@@ -1,28 +1,22 @@
 /// <reference path="../libs/jquery.d.ts" />
 /// <reference path="JsonGetter.ts" />
-/// <reference path="WikipediaGetter.ts" />
+/// <reference path="WikipediaIntegration/WikipediaGetter.ts" />
 /// <reference path="Logger.ts" />
 /// <reference path="BballPlayerAccoladeArrayCombiner.ts" />
-/// <reference path="BballPlayerAccoladeArrayCollector.ts" />
-/// <reference path="BballPlayerAccoladeArrayRetriever.ts" />
 /// <reference path="Extractors/ExtractorHelper.ts" />
 /// <reference path="Extractors/HallOfFameExtractor.ts" />
 /// <reference path="Extractors/FiftyGreatestExtractor.ts" />
 /// <reference path="Extractors/MvpExtractor.ts" />
-/// <reference path="App.ts" />
 /// <reference path="Definitions.ts" />
 
 var jsonGetter = new JsonGetter($);
 var wikipediaGetter = new WikipediaGetter($, jsonGetter);
 var logger = new Logger();
-var combiner = new BballPlayerAccoladeArrayCombiner($, logger);
-var collector = new BballPlayerAccoladeArrayCollector(logger, combiner);
-var retriever = new BballPlayerAccoladeArrayRetriever(wikipediaGetter, collector);
+var combiner = new BballPlayerAccoladeArrayCombiner();
 var htmlExtractor = new ExtractorHelper($);
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);
 var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
 var mvpMapper = new MvpExtractor($, htmlExtractor);
-var app = new App(retriever);
 
 var hofDef = {
     wikipediaPageDefinition : {
@@ -48,17 +42,30 @@ var mvpDef = {
     mappingFunction: mvpMapper.mapTableOfPlayersToArray
 }
 
-var bunchOfPlayers = new Array<ListOfPlayersWithFlag>();
-bunchOfPlayers[hofDef.wikipediaPageDefinition.titleInUrl] = { hasBeenSet: false,  arrayOfPlayers: Array<BballPlayer>() };
-bunchOfPlayers[fgDef.wikipediaPageDefinition.titleInUrl] = { hasBeenSet: false,  arrayOfPlayers: Array<BballPlayer>() };
-bunchOfPlayers[mvpDef.wikipediaPageDefinition.titleInUrl] = { hasBeenSet: false,  arrayOfPlayers: Array<BballPlayer>() };
-
-collector.initiate(bunchOfPlayers)
-
-var defs = [
-    hofDef,
-    fgDef,
-    mvpDef
+var promises = [
+    wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl(hofDef.wikipediaPageDefinition.titleInUrl),
+    wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl(fgDef.wikipediaPageDefinition.titleInUrl),
+    wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl(mvpDef.wikipediaPageDefinition.titleInUrl)
 ];
 
-app.run(defs);
+Promise.all(promises)
+    .then(function(arrayOfResults) {
+        var arrayOfPlayerObjects1 = hofDef.mappingFunction(arrayOfResults[0]);
+        var arrayOfPlayerObjects2 = fgDef.mappingFunction(arrayOfResults[1]);
+        var arrayOfPlayerObjects3 = mvpDef.mappingFunction(arrayOfResults[2]);
+
+        logger.log(hofDef.wikipediaPageDefinition.heading, arrayOfPlayerObjects1);
+        logger.log(fgDef.wikipediaPageDefinition.heading, arrayOfPlayerObjects2);
+        logger.log(mvpDef.wikipediaPageDefinition.heading, arrayOfPlayerObjects3);
+        
+        var bunchOfPlayers = new Array<Array<BballPlayer>>();
+        bunchOfPlayers[hofDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects1;
+        bunchOfPlayers[fgDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects2;
+        bunchOfPlayers[mvpDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects3;
+        
+        var combinedPlayers = combiner.combine(bunchOfPlayers);
+        logger.log('Combined', combinedPlayers);
+    })
+    .catch(function(err) {
+        logger.log(err);
+});

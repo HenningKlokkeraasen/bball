@@ -1,6 +1,6 @@
 
 class Logger {
-	log(logline: string, logtable: Array<any>) {
+	log(logline: string, logtable?: Array<any>) {
 		console.log(logline);
 		if (logtable != undefined && console.table != undefined)
 		{

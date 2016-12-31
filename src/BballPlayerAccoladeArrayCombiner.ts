@@ -2,26 +2,21 @@
 /// <reference path="Definitions.ts" />
 
 class BballPlayerAccoladeArrayCombiner {
-    constructor(public jQuery, public logger: Logger) {
-        
-    }
-    
-	combine(bunchOfPlayers: Array<ListOfPlayersWithFlag>) {
+    combine(bunchOfPlayers: Array<Array<BballPlayer>>) {
         var combinedPlayers = new Array<BballPlayer>();
         var that = this;
         for (var bunchKey in bunchOfPlayers) {
             var element = bunchOfPlayers[bunchKey];
-            for (var key in element.arrayOfPlayers) {
+            for (var key in element) {
                 if (combinedPlayers[key] === undefined) {
-                    combinedPlayers[key] = this.createNewCombinedPlayer(element.arrayOfPlayers[key]);
+                    combinedPlayers[key] = this.createNewCombinedPlayer(element[key]);
                 }
                 else {
-                    that.setProperties(element.arrayOfPlayers[key], combinedPlayers[key])
+                    that.setProperties(element[key], combinedPlayers[key])
                 }
             };
         };
-		
-		this.logger.log('Combined', combinedPlayers);
+        return combinedPlayers;
 	}
     
     createNewCombinedPlayer(entry: BballPlayer) {
