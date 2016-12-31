@@ -21,10 +21,10 @@
             <td>{{name}}</td>
             <td>{{aliases}}</td>
             <td>{{position}}</td>
-            <td>{{#if isOnDreamTeam}}Yes{{/if}}</td>
-            <td>{{#if isOnFiftyGreatesList}}Yes{{/if}}</td>
-            <td>{{numberOfTimesMvp}}</td>
-            <td>{{yearInductedInHof}}</td>
+            <td {{#if isOnDreamTeam}} class="dreamTeam" {{/if}}>{{#if isOnDreamTeam}}Yes{{/if}}</td>
+            <td {{#if isOnFiftyGreatesList}} class="fiftyGreatest" {{/if}}>{{#if isOnFiftyGreatesList}}Yes{{/if}}</td>
+            <td {{#if numberOfTimesMvp}} class="mvp" {{/if}}>{{numberOfTimesMvp}}</td>
+            <td {{#if yearInductedInHof}} class="hof" {{/if}}>{{yearInductedInHof}}</td>
         </tr>
         {{/each}}
         </tbody>
