@@ -5,7 +5,7 @@
         "lib": ["dom", "es2015.promise", "es5"]
     },
     "files": [
-        "src/WikipediaIntegration/WikipediaGetter.ts",
+        "src/Integration/WikipediaIntegrator.ts",
         "src/Utilities.ts",
         
         "src/Extractors/FiftyGreatestExtractor.ts",
@@ -13,7 +13,7 @@
         "src/Extractors/MvpExtractor.ts",
         "src/Extractors/ExtractorHelper",
         
-        "src/BballPlayerAccoladeArrayCombiner.ts",
+        "src/BballPlayerArrayJoiner.ts",
         
         "src/Startup.ts"
     ]

@@ -1,6 +1,6 @@
 /// <reference path="../Utilities.ts" />
 
-class WikipediaGetter {
+class WikipediaIntegrator {
     constructor(public jQuery, public jsonGetter: JsonGetter) { }
     
     getHtmlOfWikipediaPageByTitleInUrl(titleInUrl: string) {

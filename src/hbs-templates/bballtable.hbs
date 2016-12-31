@@ -5,6 +5,7 @@
         <thead>
         <tr>
             <th>Name</th>
+            <th>Alias</th>
             <th>Position</th>
             <th>50 Greatest</th>
             <th>MVP count</th>
@@ -15,6 +16,7 @@
         {{#each items}}
         <tr>
             <td>{{name}}</td>
+            <td>{{aliases}}</td>
             <td>{{position}}</td>
             <td>{{#if isOnFiftyGreatesList}}<strong>Y</strong>{{/if}}</td>
             <td>{{numberOfTimesMvp}}</td>

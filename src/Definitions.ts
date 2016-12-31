@@ -5,4 +5,5 @@ interface BballPlayer {
     isOnFiftyGreatesList?: boolean;
     numberOfTimesMvp?: number;
     yearInductedInHof?: number;
+    aliases?: string;
 }
