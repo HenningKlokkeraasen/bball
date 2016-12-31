@@ -11,6 +11,8 @@
             <th>Dream Team</th>
             <th>50 Greatest</th>
             <th>MVP count</th>
+            <th>All Star</th>
+            <th>Currently in NBA</th>
             <th>HOF year</th>
         </tr>
         </thead>
@@ -24,6 +26,14 @@
             <td {{#if isOnDreamTeam}} class="dreamTeam" {{/if}}>{{#if isOnDreamTeam}}Yes{{/if}}</td>
             <td {{#if isOnFiftyGreatesList}} class="fiftyGreatest" {{/if}}>{{#if isOnFiftyGreatesList}}Yes{{/if}}</td>
             <td {{#if numberOfTimesMvp}} class="mvp" {{/if}}>{{numberOfTimesMvp}}</td>
+            <td {{#if allStarAppearanceCount}} 
+                    class="asg" 
+                    title="Selections: {{allStarAppearanceYears}}
+{{#if allStarAppearanceNotes}}Notes: {{allStarAppearanceNotes}}{{/if}}"
+                {{/if}}>
+                {{allStarAppearanceCount}}
+            </td>
+            <td {{#if currentlyInNba}} class="currentlyInNba" {{/if}}>{{#if currentlyInNba}}Yes{{/if}}</td>
             <td {{#if yearInductedInHof}} class="hof" {{/if}}>{{yearInductedInHof}}</td>
         </tr>
         {{/each}}

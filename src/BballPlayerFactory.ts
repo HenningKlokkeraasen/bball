@@ -18,9 +18,21 @@ class BballPlayerFactory {
             to.yearInductedInHof = from.yearInductedInHof;
         if (from.isOnDreamTeam)
             to.isOnDreamTeam = from.isOnDreamTeam;
+        if (from.currentlyInNba)
+            to.currentlyInNba = from.currentlyInNba;
+        BballPlayerFactory.prototype.setAllStarData(from, to);
         BballPlayerFactory.prototype.addPositions(from, to);
         BballPlayerFactory.prototype.addAliases(from, to);
     }
+
+    setAllStarData(from: BballPlayer, to: BballPlayer) {
+        if (from.allStarAppearanceCount) 
+            to.allStarAppearanceCount = from.allStarAppearanceCount;
+        if (from.allStarAppearanceYears) 
+            to.allStarAppearanceYears = from.allStarAppearanceYears;
+        if (from.allStarAppearanceNotes) 
+            to.allStarAppearanceNotes = from.allStarAppearanceNotes;
+    };
 
     addPositions(from: BballPlayer, to: BballPlayer) {
         from.position = BballPlayerFactory.prototype.normalizePosition(from.position);

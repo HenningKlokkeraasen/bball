@@ -8,6 +8,7 @@
 /// <reference path="Extractors/FiftyGreatestExtractor.ts" />
 /// <reference path="Extractors/DreamTeamExtractor.ts" />
 /// <reference path="Extractors/MvpExtractor.ts" />
+/// <reference path="Extractors/AllStarExtractor.ts" />
 /// <reference path="Definitions.ts" />
 
 Handlebars.registerHelper("counter", function (index){
@@ -23,6 +24,7 @@ var hofMapper = new HallOfFameExtractor($, htmlExtractor);
 var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
 var dtMapper = new DreamTeamExtractor($, htmlExtractor);
 var mvpMapper = new MvpExtractor($, htmlExtractor);
+var asgMapper = new AllStarExtractor($, htmlExtractor);
 var domIntegrator = new DomIntegrator();
 
 var data = [
@@ -49,6 +51,12 @@ var data = [
         tabHeading: 'NBA MVP',
         wikipediaPageUrlSegment : 'NBA_Most_Valuable_Player_Award',
         mappingFunction: mvpMapper.mapTableOfPlayersToArray
+    },
+    {
+        heading: 'NBA All-Star',
+        tabHeading: 'NBA All-Star',
+        wikipediaPageUrlSegment : 'List_of_NBA_All-Stars',
+        mappingFunction: asgMapper.mapTableOfPlayersToArray
     }
 ];
 

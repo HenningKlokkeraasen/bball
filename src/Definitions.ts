@@ -6,5 +6,9 @@ interface BballPlayer {
     isOnDreamTeam?: boolean;
     numberOfTimesMvp?: number;
     yearInductedInHof?: number;
+    allStarAppearanceCount?: number;
+    allStarAppearanceYears?: string;
+    allStarAppearanceNotes?: string;
     aliases?: string;
+    currentlyInNba?: boolean;
 }
