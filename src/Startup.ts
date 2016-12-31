@@ -1,4 +1,5 @@
-/// <reference path="../libs/jquery.d.ts" />
+/// <reference path="../ts-dts/jquery.d.ts" />
+/// <reference path="../ts-dts/handlebars.d.ts" />
 /// <reference path="JsonGetter.ts" />
 /// <reference path="WikipediaIntegration/WikipediaGetter.ts" />
 /// <reference path="Logger.ts" />
@@ -8,6 +9,7 @@
 /// <reference path="Extractors/FiftyGreatestExtractor.ts" />
 /// <reference path="Extractors/MvpExtractor.ts" />
 /// <reference path="Definitions.ts" />
+/// <reference path="DomIntegration.ts" />
 
 var jsonGetter = new JsonGetter($);
 var wikipediaGetter = new WikipediaGetter($, jsonGetter);
@@ -17,6 +19,7 @@ var htmlExtractor = new ExtractorHelper($);
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);
 var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
 var mvpMapper = new MvpExtractor($, htmlExtractor);
+var domIntegrator = new DomIntegrator();
 
 var hofDef = {
     wikipediaPageDefinition : {
@@ -54,9 +57,23 @@ Promise.all(promises)
         var arrayOfPlayerObjects2 = fgDef.mappingFunction(arrayOfResults[1]);
         var arrayOfPlayerObjects3 = mvpDef.mappingFunction(arrayOfResults[2]);
 
-        logger.log(hofDef.wikipediaPageDefinition.heading, arrayOfPlayerObjects1);
-        logger.log(fgDef.wikipediaPageDefinition.heading, arrayOfPlayerObjects2);
-        logger.log(mvpDef.wikipediaPageDefinition.heading, arrayOfPlayerObjects3);
+        domIntegrator.SlapTableOntoPlaceholder(
+            hofDef.wikipediaPageDefinition.heading,
+            arrayOfPlayerObjects1,
+            "placeholder"
+        );
+
+        domIntegrator.SlapTableOntoPlaceholder(
+            fgDef.wikipediaPageDefinition.heading, 
+            arrayOfPlayerObjects2,
+            "placeholder"
+        );
+        
+        domIntegrator.SlapTableOntoPlaceholder(
+            mvpDef.wikipediaPageDefinition.heading, 
+            arrayOfPlayerObjects3,
+            "placeholder"
+        );
         
         var bunchOfPlayers = new Array<Array<BballPlayer>>();
         bunchOfPlayers[hofDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects1;
@@ -64,7 +81,12 @@ Promise.all(promises)
         bunchOfPlayers[mvpDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects3;
         
         var combinedPlayers = combiner.combine(bunchOfPlayers);
-        logger.log('Combined', combinedPlayers);
+
+        domIntegrator.SlapTableOntoPlaceholder(
+            "Combined!", 
+            combinedPlayers,
+            "placeholder"
+        );
     })
     .catch(function(err) {
         logger.log(err);

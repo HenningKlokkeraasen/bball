@@ -15,6 +15,8 @@
         "src/Extractors/ExtractorHelper",
         
         "src/BballPlayerAccoladeArrayCombiner.ts",
+
+        "src/DomIntegration.ts",
         
         "src/Startup.ts"
     ]

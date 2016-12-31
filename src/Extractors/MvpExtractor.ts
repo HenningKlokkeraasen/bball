@@ -41,15 +41,17 @@ class MvpExtractor {
         var thirdCell = this.jQuery(tr).children()[2];
         var position = this.jQuery(thirdCell).text();
         
-        if (arrayOfPlayerObjects[playerValues.id] != undefined) {
-            arrayOfPlayerObjects[playerValues.id].numberOfTimesMvp = arrayOfPlayerObjects[playerValues.id].numberOfTimesMvp + 1;
+        var player = arrayOfPlayerObjects.find(p => p.id == playerValues.id);
+        if (player) {
+            player.numberOfTimesMvp = player.numberOfTimesMvp + 1;
         }
         else {
-            arrayOfPlayerObjects[playerValues.id] = {
+            arrayOfPlayerObjects.push({
+                id: playerValues.id,
                 name : playerValues.name,
                 position : position,
                 numberOfTimesMvp : 1
-            };
+            });
         }
     }
 }

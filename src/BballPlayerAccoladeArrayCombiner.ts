@@ -4,23 +4,25 @@
 class BballPlayerAccoladeArrayCombiner {
     combine(bunchOfPlayers: Array<Array<BballPlayer>>) {
         var combinedPlayers = new Array<BballPlayer>();
-        var that = this;
+        var self = this;
         for (var bunchKey in bunchOfPlayers) {
-            var element = bunchOfPlayers[bunchKey];
-            for (var key in element) {
-                if (combinedPlayers[key] === undefined) {
-                    combinedPlayers[key] = this.createNewCombinedPlayer(element[key]);
+            var arrayOfPlayers = bunchOfPlayers[bunchKey];
+            arrayOfPlayers.forEach(function(player) {
+                var existingPlayer = combinedPlayers.find(p => p.id == player.id);
+                if (existingPlayer === undefined) {
+                    combinedPlayers.push(self.createNewCombinedPlayer(player));
                 }
                 else {
-                    that.setProperties(element[key], combinedPlayers[key])
+                    self.setProperties(player, existingPlayer)
                 }
-            };
+            });
         };
         return combinedPlayers;
 	}
     
     createNewCombinedPlayer(entry: BballPlayer) {
         var newPlayer = {
+            id: entry.id,
             name: entry.name,
             position: entry.position
         };

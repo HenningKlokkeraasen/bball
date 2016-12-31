@@ -7,5 +7,7 @@ call choco install nodejs
 call choco install npm
 
 call npm install -g typescript
+call npm install jquery
+call npm install -g handlebars
 
 echo done

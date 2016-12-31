@@ -1,0 +1,21 @@
+<div>
+    <h3>{{title}}</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Is on 50 Greatest list</th>
+            <th>Number of times MVP</th>
+            <th>Year inducted into HOF</th>
+        </tr>
+        {{#each items}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{position}}</td>
+            <td>{{isOnFiftyGreatesList}}</td>
+            <td>{{numberOfTimesMvp}}</td>
+            <td>{{yearInductedInHof}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>

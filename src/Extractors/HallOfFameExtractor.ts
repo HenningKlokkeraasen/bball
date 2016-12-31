@@ -45,11 +45,12 @@ class HallOfFameExtractor {
         
         
         
-        arrayOfPlayerObjects[playerValues.id] = {
+        arrayOfPlayerObjects.push({
+            id: playerValues.id,
             name : playerValues.name,
             position : position,
             yearInductedInHof : year,
-        };
+        });
         
     }
 }

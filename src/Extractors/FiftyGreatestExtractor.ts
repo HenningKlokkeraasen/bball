@@ -45,11 +45,12 @@ class FiftyGreatestExtractor {
         
         
         
-        arrayOfPlayerObjects[playerValues.id] = {
-            name : playerValues.name,
+        arrayOfPlayerObjects.push({
+            id: playerValues.id,
+			name : playerValues.name,
             position : position,
 			isOnFiftyGreatesList: true
-        };
+		});
         
     }
 }
