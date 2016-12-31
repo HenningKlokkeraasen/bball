@@ -84,6 +84,7 @@ Promise.all(promises)
             domIntegrator.renderBballPlayerTable(
                 data[i].heading,
                 safeDomId,
+                data[i].wikipediaPageUrlSegment,
                 i === 0,
                 arrayOfResults[i],
                 "placeholderTabContent"
@@ -101,6 +102,7 @@ Promise.all(promises)
         domIntegrator.renderBballPlayerTable(
             "Combined!", 
             "combined",
+            null,
             false,
             combinedPlayers,
             "placeholderTabContent"

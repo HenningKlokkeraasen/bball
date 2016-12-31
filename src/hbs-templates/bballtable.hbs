@@ -1,5 +1,8 @@
-<div class="tab-pane {{#if isActive}}active{{/if}}" id="{{id}}">
+<div class="tab-pane {{#if isActive}}active{{/if}}" id="{{domId}}">
     <h3>{{heading}}</h3>
+    {{#if wikipediaUrlSegment}}
+        <p>Source: <a href="https://en.wikipedia.org/wiki/{{wikipediaUrlSegment}}" target="_blank">Wikipedia: {{wikipediaUrlSegment}}</a></p>
+    {{/if}}
     <div class="table-responsive">
     <table class="table table-striped table-hover table-sm">
         <thead>

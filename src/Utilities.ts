@@ -23,26 +23,27 @@ class Logger {
 }
 
 class DomIntegrator {
-	renderBballPlayerTable(heading: string, id: string, isActive: boolean, arrayOfPlayerObjects: Array<BballPlayer>, placeholderId: string) {
+	renderBballPlayerTable(heading: string, domId: string, wikipediaUrlSegment: string, isActive: boolean, arrayOfPlayerObjects: Array<BballPlayer>, placeholderId: string) {
 		var html = Handlebars.templates['bballtable.hbs']({
 			heading: heading, 
 			items: arrayOfPlayerObjects,
 			isActive: isActive,
-			id: id
+			domId: domId,
+			wikipediaUrlSegment: wikipediaUrlSegment
 		});
 		document.getElementById(placeholderId).innerHTML += html;
-		$(`#${id} table`).DataTable({
+		$(`#${domId} table`).DataTable({
 			paging: false,
 			searching: false,
 			info: false
 		});
 	}
 
-	renderBballPlayerTab(heading: string, id: string, isActive: boolean, placeholderId: string) {
+	renderBballPlayerTab(heading: string, domId: string, isActive: boolean, placeholderId: string) {
 		var html = Handlebars.templates['bballtab.hbs']({
 			heading: heading,
 			isActive: isActive,
-			id: id
+			domId: domId
 		});
 		document.getElementById(placeholderId).innerHTML += html;
 	}
