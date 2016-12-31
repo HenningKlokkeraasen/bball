@@ -9,6 +9,10 @@
 /// <reference path="Extractors/MvpExtractor.ts" />
 /// <reference path="Definitions.ts" />
 
+Handlebars.registerHelper("counter", function (index){
+    return index + 1;
+});
+
 var jsonGetter = new JsonGetter($);
 var wikipediaGetter = new WikipediaIntegrator($, jsonGetter);
 var logger = new Logger();

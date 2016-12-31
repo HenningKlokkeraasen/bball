@@ -31,6 +31,11 @@ class DomIntegrator {
 			id: id
 		});
 		document.getElementById(placeholderId).innerHTML += html;
+		$(`#${id} table`).DataTable({
+			paging: false,
+			searching: false,
+			info: false
+		});
 	}
 
 	renderBballPlayerTab(heading: string, id: string, isActive: boolean, placeholderId: string) {
