@@ -19,6 +19,8 @@
         "src/BballPlayerAliasFinder.ts",
         "src/BballPlayerFactory.ts",
         
+        "src/DataDefinition.ts",
+        "src/App.ts",
         "src/Startup.ts"
     ]
 }
