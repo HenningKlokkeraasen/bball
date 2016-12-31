@@ -21,24 +21,21 @@ var domIntegrator = new DomIntegrator();
 
 var data = [
     {
-        wikipediaPageDefinition : {
-            titleInUrl : 'List_of_players_in_the_Naismith_Memorial_Basketball_Hall_of_Fame',
-            heading: 'List of players in the Naismith Memorial Basketball Hall of Fame'
-        },
+        heading: 'List of players in the Naismith Memorial Basketball Hall of Fame',
+        tabHeading: 'Hall of Fame',
+        wikipediaPageUrlSegment : 'List_of_players_in_the_Naismith_Memorial_Basketball_Hall_of_Fame',
         mappingFunction: hofMapper.mapTableOfPlayersToArray
     },
     {
-        wikipediaPageDefinition : {
-            titleInUrl : '50_Greatest_Players_in_NBA_History',
-            heading: '50 Greatest Players in NBA History'
-        },
+        heading: '50 Greatest Players in NBA History',
+        tabHeading: '50 Greatest',
+        wikipediaPageUrlSegment : '50_Greatest_Players_in_NBA_History',
         mappingFunction: fgMapper.mapTableOfPlayersToArray
     },
     {
-        wikipediaPageDefinition : {
-            titleInUrl : 'NBA_Most_Valuable_Player_Award',
-            heading: 'NBA Most Valuable Player Award'
-        },
+        heading: 'NBA Most Valuable Player Award',
+        tabHeading: 'NBA MVP',
+        wikipediaPageUrlSegment : 'NBA_Most_Valuable_Player_Award',
         mappingFunction: mvpMapper.mapTableOfPlayersToArray
     }
 ];
@@ -48,7 +45,7 @@ var lrs = new LocalOrRemoteStorage(new LocalStorageIntegrator());
 var promises = [];
 data.forEach(e => promises.push(
     lrs.getFromLocalStorageOrFetchFromRemote<Array<BballPlayer>>(
-        e.wikipediaPageDefinition.titleInUrl, 
+        e.wikipediaPageUrlSegment, 
         wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl,
         e.mappingFunction)));
 
@@ -57,19 +54,35 @@ Promise.all(promises)
         var bunchOfPlayers = new Array<Array<BballPlayer>>();
 
         for (var i = 0; i < arrayOfResults.length; i++){
-            domIntegrator.slapHtmlIntoPlaceholder(
-                data[i].wikipediaPageDefinition.heading,
-                arrayOfResults[i],
-                "placeholder"
+            domIntegrator.renderBballPlayerTab(
+                data[i].tabHeading,
+                data[i].wikipediaPageUrlSegment,
+                i === 0,
+                "placeholderTabs"
             );
-            bunchOfPlayers[data[i].wikipediaPageDefinition.titleInUrl] = arrayOfResults[i];
+            domIntegrator.renderBballPlayerTable(
+                data[i].heading,
+                data[i].wikipediaPageUrlSegment,
+                i === 0,
+                arrayOfResults[i],
+                "placeholderTabContent"
+            );
+            bunchOfPlayers[data[i].wikipediaPageUrlSegment] = arrayOfResults[i];
         }
         
         var combinedPlayers = combiner.combine(bunchOfPlayers);
-        domIntegrator.slapHtmlIntoPlaceholder(
+        domIntegrator.renderBballPlayerTab(
+            "Combined!",
+            "combined",
+            false,
+            "placeholderTabs"
+        );
+        domIntegrator.renderBballPlayerTable(
             "Combined!", 
+            "combined",
+            false,
             combinedPlayers,
-            "placeholder"
+            "placeholderTabContent"
         );
     })
     .catch(function(err) {

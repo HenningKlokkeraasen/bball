@@ -23,10 +23,21 @@ class Logger {
 }
 
 class DomIntegrator {
-	slapHtmlIntoPlaceholder(heading: string, arrayOfPlayerObjects: Array<BballPlayer>, placeholderId: string) {
+	renderBballPlayerTable(heading: string, id: string, isActive: boolean, arrayOfPlayerObjects: Array<BballPlayer>, placeholderId: string) {
 		var html = Handlebars.templates['bballtable.hbs']({
-			title: heading, 
-			items: arrayOfPlayerObjects
+			heading: heading, 
+			items: arrayOfPlayerObjects,
+			isActive: isActive,
+			id: id
+		});
+		document.getElementById(placeholderId).innerHTML += html;
+	}
+
+	renderBballPlayerTab(heading: string, id: string, isActive: boolean, placeholderId: string) {
+		var html = Handlebars.templates['bballtab.hbs']({
+			heading: heading,
+			isActive: isActive,
+			id: id
 		});
 		document.getElementById(placeholderId).innerHTML += html;
 	}

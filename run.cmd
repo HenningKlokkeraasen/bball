@@ -4,15 +4,17 @@
 
 @rem keyboard shortcut to open the console from VS Code is ctrl+shift+c
 
-
-@rem ----compile-------
 @rem call is used so that the script returns after running the command
 
-@rem Typescript compiler
-call tsc
+
+@rem ----compile-------
 
 @rem Precompile Handlebars templates
 call handlebars src/hbs-templates/bballtable.hbs -f public/hbs-templates/bballtable.js
+call handlebars src/hbs-templates/bballtab.hbs -f public/hbs-templates/bballtab.js
+
+@rem Typescript compiler
+call tsc
 
 
 @rem ------run---------
