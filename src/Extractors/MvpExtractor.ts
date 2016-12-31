@@ -2,9 +2,7 @@
 /// <reference path="../Definitions.ts" />
 
 class MvpExtractor {
-    constructor(public jQuery, public htmlExtractor: ExtractorHelper) {
-        
-    }
+    constructor(public jQuery, public htmlExtractor: ExtractorHelper) { }
 	
 	mapTableOfPlayersToArray = (content: string) => {
 		var html = this.jQuery.parseHTML(content);

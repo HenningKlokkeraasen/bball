@@ -6,8 +6,7 @@
     },
     "files": [
         "src/WikipediaIntegration/WikipediaGetter.ts",
-        "src/JsonGetter.ts",
-        "src/Logger.ts",
+        "src/Utilities.ts",
         
         "src/Extractors/FiftyGreatestExtractor.ts",
         "src/Extractors/HallOfFameExtractor.ts",
@@ -15,8 +14,6 @@
         "src/Extractors/ExtractorHelper",
         
         "src/BballPlayerAccoladeArrayCombiner.ts",
-
-        "src/DomIntegration.ts",
         
         "src/Startup.ts"
     ]

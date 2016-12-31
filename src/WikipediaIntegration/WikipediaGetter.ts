@@ -1,4 +1,4 @@
-/// <reference path="../JsonGetter.ts" />
+/// <reference path="../Utilities.ts" />
 
 class WikipediaGetter {
     constructor(public jQuery, public jsonGetter: JsonGetter) { }

@@ -1,21 +1,27 @@
 <div>
     <h3>{{title}}</h3>
-    <table>
+    <div class="table-responsive">
+    <table class="table table-striped table-hover table-sm">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Position</th>
-            <th>Is on 50 Greatest list</th>
-            <th>Number of times MVP</th>
-            <th>Year inducted into HOF</th>
+            <th>50 Greatest</th>
+            <th>MVP count</th>
+            <th>HOF year</th>
         </tr>
+        </thead>
+        <tbody>
         {{#each items}}
         <tr>
             <td>{{name}}</td>
             <td>{{position}}</td>
-            <td>{{isOnFiftyGreatesList}}</td>
+            <td>{{#if isOnFiftyGreatesList}}<strong>Y</strong>{{/if}}</td>
             <td>{{numberOfTimesMvp}}</td>
             <td>{{yearInductedInHof}}</td>
         </tr>
         {{/each}}
+        </tbody>
     </table>
+    </div>
 </div>

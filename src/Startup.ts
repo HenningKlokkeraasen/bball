@@ -1,15 +1,13 @@
 /// <reference path="../ts-dts/jquery.d.ts" />
 /// <reference path="../ts-dts/handlebars.d.ts" />
-/// <reference path="JsonGetter.ts" />
+/// <reference path="Utilities.ts" />
 /// <reference path="WikipediaIntegration/WikipediaGetter.ts" />
-/// <reference path="Logger.ts" />
 /// <reference path="BballPlayerAccoladeArrayCombiner.ts" />
 /// <reference path="Extractors/ExtractorHelper.ts" />
 /// <reference path="Extractors/HallOfFameExtractor.ts" />
 /// <reference path="Extractors/FiftyGreatestExtractor.ts" />
 /// <reference path="Extractors/MvpExtractor.ts" />
 /// <reference path="Definitions.ts" />
-/// <reference path="DomIntegration.ts" />
 
 var jsonGetter = new JsonGetter($);
 var wikipediaGetter = new WikipediaGetter($, jsonGetter);
@@ -45,44 +43,51 @@ var mvpDef = {
     mappingFunction: mvpMapper.mapTableOfPlayersToArray
 }
 
+var lrs = new LocalOrRemoteStorage(new LocalStorageIntegrator());
+
 var promises = [
-    wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl(hofDef.wikipediaPageDefinition.titleInUrl),
-    wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl(fgDef.wikipediaPageDefinition.titleInUrl),
-    wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl(mvpDef.wikipediaPageDefinition.titleInUrl)
+    lrs.getFromLocalStorageOrFetchFromRemote<Array<BballPlayer>>(
+        hofDef.wikipediaPageDefinition.titleInUrl, 
+        wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl,
+        hofDef.mappingFunction),
+    lrs.getFromLocalStorageOrFetchFromRemote<Array<BballPlayer>>(
+        fgDef.wikipediaPageDefinition.titleInUrl, 
+        wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl,
+        fgDef.mappingFunction),
+    lrs.getFromLocalStorageOrFetchFromRemote<Array<BballPlayer>>(
+        mvpDef.wikipediaPageDefinition.titleInUrl, 
+        wikipediaGetter.getHtmlOfWikipediaPageByTitleInUrl,
+        mvpDef.mappingFunction)
 ];
 
 Promise.all(promises)
     .then(function(arrayOfResults) {
-        var arrayOfPlayerObjects1 = hofDef.mappingFunction(arrayOfResults[0]);
-        var arrayOfPlayerObjects2 = fgDef.mappingFunction(arrayOfResults[1]);
-        var arrayOfPlayerObjects3 = mvpDef.mappingFunction(arrayOfResults[2]);
-
-        domIntegrator.SlapTableOntoPlaceholder(
+        domIntegrator.slapHtmlIntoPlaceholder(
             hofDef.wikipediaPageDefinition.heading,
-            arrayOfPlayerObjects1,
+            arrayOfResults[0],
             "placeholder"
         );
 
-        domIntegrator.SlapTableOntoPlaceholder(
+        domIntegrator.slapHtmlIntoPlaceholder(
             fgDef.wikipediaPageDefinition.heading, 
-            arrayOfPlayerObjects2,
+            arrayOfResults[1],
             "placeholder"
         );
         
-        domIntegrator.SlapTableOntoPlaceholder(
+        domIntegrator.slapHtmlIntoPlaceholder(
             mvpDef.wikipediaPageDefinition.heading, 
-            arrayOfPlayerObjects3,
+            arrayOfResults[2],
             "placeholder"
         );
         
         var bunchOfPlayers = new Array<Array<BballPlayer>>();
-        bunchOfPlayers[hofDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects1;
-        bunchOfPlayers[fgDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects2;
-        bunchOfPlayers[mvpDef.wikipediaPageDefinition.titleInUrl] = arrayOfPlayerObjects3;
+        bunchOfPlayers[hofDef.wikipediaPageDefinition.titleInUrl] = arrayOfResults[0];
+        bunchOfPlayers[fgDef.wikipediaPageDefinition.titleInUrl] = arrayOfResults[1];
+        bunchOfPlayers[mvpDef.wikipediaPageDefinition.titleInUrl] = arrayOfResults[2];
         
         var combinedPlayers = combiner.combine(bunchOfPlayers);
 
-        domIntegrator.SlapTableOntoPlaceholder(
+        domIntegrator.slapHtmlIntoPlaceholder(
             "Combined!", 
             combinedPlayers,
             "placeholder"

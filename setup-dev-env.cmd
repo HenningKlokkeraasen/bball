@@ -9,5 +9,6 @@ call choco install npm
 call npm install -g typescript
 call npm install jquery
 call npm install -g handlebars
+call npm install bootstrap
 
 echo done

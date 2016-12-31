@@ -1,4 +1,4 @@
-/// <reference path="Logger.ts" />
+/// <reference path="Utilities.ts" />
 /// <reference path="Definitions.ts" />
 
 class BballPlayerAccoladeArrayCombiner {
