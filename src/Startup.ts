@@ -6,6 +6,7 @@
 /// <reference path="Extractors/ExtractorHelper.ts" />
 /// <reference path="Extractors/HallOfFameExtractor.ts" />
 /// <reference path="Extractors/FiftyGreatestExtractor.ts" />
+/// <reference path="Extractors/DreamTeamExtractor.ts" />
 /// <reference path="Extractors/MvpExtractor.ts" />
 /// <reference path="Definitions.ts" />
 
@@ -20,6 +21,7 @@ var combiner = new BballPlayerArrayJoiner();
 var htmlExtractor = new ExtractorHelper($);
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);
 var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
+var dtMapper = new DreamTeamExtractor($, htmlExtractor);
 var mvpMapper = new MvpExtractor($, htmlExtractor);
 var domIntegrator = new DomIntegrator();
 
@@ -29,6 +31,12 @@ var data = [
         tabHeading: 'Hall of Fame',
         wikipediaPageUrlSegment : 'List_of_players_in_the_Naismith_Memorial_Basketball_Hall_of_Fame',
         mappingFunction: hofMapper.mapTableOfPlayersToArray
+    },
+    {
+        heading: 'Dream Team (1992 United States men\'s Olympic basketball team)',
+        tabHeading: 'Dream Team',
+        wikipediaPageUrlSegment : '1992_United_States_men%27s_Olympic_basketball_team',
+        mappingFunction: dtMapper.mapTableOfPlayersToArray
     },
     {
         heading: '50 Greatest Players in NBA History',
@@ -58,20 +66,21 @@ Promise.all(promises)
         var bunchOfPlayers = new Array<Array<BballPlayer>>();
 
         for (var i = 0; i < arrayOfResults.length; i++){
+            var safeDomId = data[i].wikipediaPageUrlSegment.replace('%27', '');
             domIntegrator.renderBballPlayerTab(
                 data[i].tabHeading,
-                data[i].wikipediaPageUrlSegment,
+                safeDomId,
                 i === 0,
                 "placeholderTabs"
             );
             domIntegrator.renderBballPlayerTable(
                 data[i].heading,
-                data[i].wikipediaPageUrlSegment,
+                safeDomId,
                 i === 0,
                 arrayOfResults[i],
                 "placeholderTabContent"
             );
-            bunchOfPlayers[data[i].wikipediaPageUrlSegment] = arrayOfResults[i];
+            bunchOfPlayers[safeDomId] = arrayOfResults[i];
         }
         
         var combinedPlayers = combiner.combine(bunchOfPlayers);

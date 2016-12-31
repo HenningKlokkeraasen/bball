@@ -9,6 +9,7 @@
         "src/Utilities.ts",
         
         "src/Extractors/FiftyGreatestExtractor.ts",
+        "src/Extractors/DreamTeamExtractor.ts",
         "src/Extractors/HallOfFameExtractor.ts",
         "src/Extractors/MvpExtractor.ts",
         "src/Extractors/ExtractorHelper",

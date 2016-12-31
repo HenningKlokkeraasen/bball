@@ -16,6 +16,8 @@ class BballPlayerFactory {
             to.numberOfTimesMvp = from.numberOfTimesMvp;
         if (from.yearInductedInHof)
             to.yearInductedInHof = from.yearInductedInHof;
+        if (from.isOnDreamTeam)
+            to.isOnDreamTeam = from.isOnDreamTeam;
         this.addPositions(from, to);
         this.addAliases(from, to);
     }

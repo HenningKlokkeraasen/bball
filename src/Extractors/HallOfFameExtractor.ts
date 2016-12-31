@@ -1,6 +1,8 @@
 /// <reference path="ExtractorHelper.ts" />
 /// <reference path="../Definitions.ts" />
 
+
+
 class HallOfFameExtractor {
     constructor(public jQuery, public htmlExtractor: ExtractorHelper) { }
     
