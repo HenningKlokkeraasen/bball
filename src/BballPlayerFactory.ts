@@ -18,13 +18,27 @@ class BballPlayerFactory {
             to.yearInductedInHof = from.yearInductedInHof;
         if (from.isOnDreamTeam)
             to.isOnDreamTeam = from.isOnDreamTeam;
-        this.addPositions(from, to);
-        this.addAliases(from, to);
+        BballPlayerFactory.prototype.addPositions(from, to);
+        BballPlayerFactory.prototype.addAliases(from, to);
     }
 
     addPositions(from: BballPlayer, to: BballPlayer) {
+        from.position = BballPlayerFactory.prototype.normalizePosition(from.position);
+        to.position = BballPlayerFactory.prototype.normalizePosition(to.position);
+
         if (from.position && from.position !== to.position)
             to.position = to.position ? `${to.position}, ${from.position}` : from.position;
+    }
+
+    normalizePosition(position: string) {
+        if (position === "Center") return "C";
+        if (position === "Forward") return "F";
+        if (position === "Guard") return"G";
+        if (position === "Center/Forward" || position === "C-F") return "C/F";
+        if (position === "Forward/Center" || position === "F-C") return "F/C";
+        if (position === "Guard/Forward" || position === "G-F") return "G/F";
+        if (position === "Forward/Guard" || position === "F-G") return "F/G";
+        return position;
     }
 
     addAliases(from: BballPlayer, to: BballPlayer) {
