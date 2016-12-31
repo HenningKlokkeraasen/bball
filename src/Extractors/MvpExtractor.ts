@@ -1,5 +1,7 @@
 /// <reference path="ExtractorHelper.ts" />
 /// <reference path="../Definitions.ts" />
+/// <reference path="../BballAliasFinder.ts" />
+/// <reference path="../BballPlayerFactory.ts" />
 
 class MvpExtractor {
     constructor(public jQuery, public htmlExtractor: ExtractorHelper) { }
@@ -39,9 +41,10 @@ class MvpExtractor {
         var thirdCell = this.jQuery(tr).children()[2];
         var position = this.jQuery(thirdCell).text();
         
-        var player = arrayOfPlayerObjects.find(p => p.id == playerValues.id);
+        var player = arrayOfPlayerObjects.find(p => BballAliasFinder.prototype.findByIdOrAlternateId(p, playerValues.id));
         if (player) {
             player.numberOfTimesMvp = player.numberOfTimesMvp + 1;
+            BballPlayerFactory.prototype.addAliases({ id: playerValues.id, name: playerValues.name, position: null }, player);
         }
         else {
             arrayOfPlayerObjects.push({

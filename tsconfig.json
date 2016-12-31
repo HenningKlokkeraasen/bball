@@ -14,6 +14,8 @@
         "src/Extractors/ExtractorHelper",
         
         "src/BballPlayerArrayJoiner.ts",
+        "src/BballPlayerAliasFinder.ts",
+        "src/BballPlayerFactory.ts",
         
         "src/Startup.ts"
     ]
