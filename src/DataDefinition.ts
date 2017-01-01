@@ -8,7 +8,7 @@
 /// <reference path="Extractors/AllNbaTeamExtractor.ts" />
 
 
-var htmlExtractor = new ExtractorHelper($);
+var htmlExtractor = new ExtractorHelper();
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);
 var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
 var dtMapper = new DreamTeamExtractor($, htmlExtractor);

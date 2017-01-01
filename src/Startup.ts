@@ -13,7 +13,7 @@ Handlebars.registerHelper("counter", function (index){
 
 var app = new App(
     new LocalOrRemoteStorage(new LocalStorageIntegrator()), 
-    new DomIntegrator(), 
+    new DomRenderer(), 
     new WikipediaIntegrator(), 
     new BballPlayerArrayJoiner());
 

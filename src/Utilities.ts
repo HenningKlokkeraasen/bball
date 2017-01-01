@@ -1,12 +1,10 @@
 /// <reference path="../ts-dts/handlebars.d.ts" />
 /// <reference path="Definitions.ts" />
 
-class JsonGetter {
-	constructor(public jQuery) { }
-
+class CrossDomainJsonGetter {
 	getJson(url: string) {
 		return new Promise<any>(function(resolve, reject) {
-			this.jQuery.ajax({
+			$.ajax({
 				url: url,
 				dataType: 'jsonp'
 			}).done(resolve).fail(reject);
@@ -22,7 +20,7 @@ class Logger {
 	}
 }
 
-class DomIntegrator {
+class DomRenderer {
 	renderBballPlayerTable(heading: string, domId: string, wikipediaUrlSegment: string, isActive: boolean, arrayOfPlayerObjects: Array<BballPlayer>, placeholderId: string) {
 		var html = Handlebars.templates['bballtable.hbs']({
 			heading: heading, 
@@ -34,7 +32,6 @@ class DomIntegrator {
 		document.getElementById(placeholderId).innerHTML += html;
 		$(`#${domId} table`).DataTable({
 			paging: false,
-			searching: false,
 			info: false
 		});
 	}
