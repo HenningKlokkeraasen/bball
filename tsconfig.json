@@ -13,7 +13,8 @@
         "src/Extractors/HallOfFameExtractor.ts",
         "src/Extractors/MvpExtractor.ts",
         "src/Extractors/AllStarExtractor.ts",
-        "src/Extractors/ExtractorHelper",
+        "src/Extractors/AllNbaTeamExtractor.ts",
+        "src/Extractors/ExtractorHelper.ts",
         
         "src/BballPlayerArrayJoiner.ts",
         "src/BballPlayerAliasFinder.ts",

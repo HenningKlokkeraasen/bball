@@ -14,7 +14,7 @@ Handlebars.registerHelper("counter", function (index){
 var app = new App(
     new LocalOrRemoteStorage(new LocalStorageIntegrator()), 
     new DomIntegrator(), 
-    new WikipediaIntegrator($, new JsonGetter($)), 
+    new WikipediaIntegrator(), 
     new BballPlayerArrayJoiner());
 
 app.run(dataDefinition);

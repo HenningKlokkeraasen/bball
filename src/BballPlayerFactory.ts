@@ -20,9 +20,19 @@ class BballPlayerFactory {
             to.isOnDreamTeam = from.isOnDreamTeam;
         if (from.currentlyInNba)
             to.currentlyInNba = from.currentlyInNba;
+        BballPlayerFactory.prototype.setAllNbaTeamData(from, to);
         BballPlayerFactory.prototype.setAllStarData(from, to);
         BballPlayerFactory.prototype.addPositions(from, to);
         BballPlayerFactory.prototype.addAliases(from, to);
+    }
+
+    setAllNbaTeamData(from: BballPlayer, to: BballPlayer) {
+        if (from.numberOfTimesAllNbaFirstTeam)
+            to.numberOfTimesAllNbaFirstTeam = from.numberOfTimesAllNbaFirstTeam;
+        if (from.numberOfTimesAllNbaSecondTeam)
+            to.numberOfTimesAllNbaSecondTeam = from.numberOfTimesAllNbaSecondTeam;
+        if (from.numberOfTimesAllNbaThirdTeam)
+            to.numberOfTimesAllNbaThirdTeam = from.numberOfTimesAllNbaThirdTeam;
     }
 
     setAllStarData(from: BballPlayer, to: BballPlayer) {

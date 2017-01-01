@@ -5,6 +5,8 @@
 /// <reference path="Extractors/DreamTeamExtractor.ts" />
 /// <reference path="Extractors/MvpExtractor.ts" />
 /// <reference path="Extractors/AllStarExtractor.ts" />
+/// <reference path="Extractors/AllNbaTeamExtractor.ts" />
+
 
 var htmlExtractor = new ExtractorHelper($);
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);
@@ -12,6 +14,7 @@ var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
 var dtMapper = new DreamTeamExtractor($, htmlExtractor);
 var mvpMapper = new MvpExtractor($, htmlExtractor);
 var asgMapper = new AllStarExtractor($, htmlExtractor);
+var antMapper = new AllNbaTeamExtractor($, htmlExtractor);
 
 var dataDefinition = [
     {
@@ -43,5 +46,11 @@ var dataDefinition = [
         tabHeading: 'NBA All-Star',
         wikipediaPageUrlSegment : 'List_of_NBA_All-Stars',
         mappingFunction: asgMapper.mapTableOfPlayersToArray
+    },
+    {
+        heading: 'All-NBA Team',
+        tabHeading: 'All-NBA Team',
+        wikipediaPageUrlSegment : 'All-NBA_Team',
+        mappingFunction: antMapper.mapTableOfPlayersToArray
     }
 ];
