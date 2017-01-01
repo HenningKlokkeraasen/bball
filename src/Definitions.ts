@@ -2,9 +2,17 @@ interface BballPlayer {
     id: string;
     name: string;
     position: string;
+
     isOnFiftyGreatesList?: boolean;
+    
     isOnDreamTeam?: boolean;
+
     numberOfTimesMvp?: number;
+    mvpSeasons?: Array<string>;
+
+    numberOfTimesFinalsMvp?: number;
+    finalsMvpYears?: Array<number>;
+
     yearInductedInHof?: number;
 
     allStarAppearanceCount?: number;
@@ -16,5 +24,6 @@ interface BballPlayer {
     numberOfTimesAllNbaThirdTeam?: number;
     
     aliases?: string;
+    
     currentlyInNba?: boolean;
 }

@@ -7,7 +7,7 @@
     <table class="table table-striped table-hover table-sm">
         <thead>
         <tr>
-            <th colspan="8"></th>
+            <th colspan="9"></th>
             <th colspan="3">All-NBA Team</th>
             <th></th>
         </tr>
@@ -19,6 +19,7 @@
             <th>Dream Team</th>
             <th>50 Greatest</th>
             <th>MVP count</th>
+            <th>Finals MVP count</th>
             <th>All-Star</th>
             <th>1st</th>
             <th>2nd</th>
@@ -36,12 +37,19 @@
             <td>{{position}}</td>
             <td {{#if isOnDreamTeam}} class="dreamTeam" {{/if}}>{{#if isOnDreamTeam}}Yes{{/if}}</td>
             <td {{#if isOnFiftyGreatesList}} class="fiftyGreatest" {{/if}}>{{#if isOnFiftyGreatesList}}Yes{{/if}}</td>
-            <td {{#if numberOfTimesMvp}} class="mvp" {{/if}}>{{numberOfTimesMvp}}</td>
+            <td {{#if numberOfTimesMvp}} 
+                    class="mvp" 
+                    title="Seasons: {{#each mvpSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesMvp}}</td>
+            <td {{#if numberOfTimesFinalsMvp}} 
+                    class="finalsMvp" 
+                    title="Years: {{#each finalsMvpYears}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesFinalsMvp}}</td>
             <td {{#if allStarAppearanceCount}} 
                     class="asg" 
                     title="Selections: {{allStarAppearanceYears}}
 {{#if allStarAppearanceNotes}}Notes: {{allStarAppearanceNotes}}{{/if}}"
-                {{/if}}>
+                    {{/if}}>
                 {{allStarAppearanceCount}}
             </td>
             <td>{{numberOfTimesAllNbaFirstTeam}}</td>

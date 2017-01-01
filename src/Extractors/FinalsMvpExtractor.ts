@@ -3,7 +3,7 @@
 /// <reference path="../BballAliasFinder.ts" />
 /// <reference path="../BballPlayerFactory.ts" />
 
-class MvpExtractor {
+class FinalsMvpExtractor {
     constructor(public jQuery, public htmlExtractor: ExtractorHelper) { }
 	
 	mapTableOfPlayersToArray = (content: string) => {
@@ -17,7 +17,7 @@ class MvpExtractor {
                 var tr = that.jQuery(tbody).children()[0];
                 var cell = that.jQuery(tr).children()[0];
                 var text = cell.innerHTML;
-                if (text == 'Season')
+                if (text == 'Year')
                 {
                     that.jQuery.each(that.jQuery(child).find('tr'), function(j, tr) {
                         if (j > 0) {
@@ -33,7 +33,7 @@ class MvpExtractor {
     
     extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<BballPlayer>) {
         var firstCell = this.jQuery(tr).children()[0];
-        var season = this.jQuery(firstCell).text();
+        var year = this.jQuery(firstCell).text();
         
         var secondCell = this.jQuery(tr).children()[1];
         var playerValues = this.htmlExtractor.extractPlayerValuesFromLinkInCell(secondCell);
@@ -43,10 +43,10 @@ class MvpExtractor {
         
         var player = arrayOfPlayerObjects.find(p => BballAliasFinder.prototype.findByIdOrAlternateId(p, playerValues.id));
         if (player) {
-            player.numberOfTimesMvp = player.numberOfTimesMvp + 1;
-            if (player.mvpSeasons === undefined)
-                player.mvpSeasons = new Array<string>();
-            player.mvpSeasons.push(season);
+            player.numberOfTimesFinalsMvp = player.numberOfTimesFinalsMvp + 1;
+            if (player.finalsMvpYears === undefined)
+                player.finalsMvpYears = new Array<number>();
+            player.finalsMvpYears.push(year);
             BballPlayerFactory.prototype.addAliases({ id: playerValues.id, name: playerValues.name, position: null }, player);
         }
         else {
@@ -54,8 +54,8 @@ class MvpExtractor {
                 id: playerValues.id,
                 name : playerValues.name,
                 position : position,
-                numberOfTimesMvp : 1,
-                mvpSeasons: [season]
+                numberOfTimesFinalsMvp : 1,
+                finalsMvpYears: [year]
             });
         }
     }

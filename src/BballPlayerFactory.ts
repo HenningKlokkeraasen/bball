@@ -12,18 +12,32 @@ class BballPlayerFactory {
     copyNotNullProperties(from: BballPlayer, to: BballPlayer) {
         if (from.isOnFiftyGreatesList)
             to.isOnFiftyGreatesList = from.isOnFiftyGreatesList;
-        if (from.numberOfTimesMvp)
-            to.numberOfTimesMvp = from.numberOfTimesMvp;
         if (from.yearInductedInHof)
             to.yearInductedInHof = from.yearInductedInHof;
         if (from.isOnDreamTeam)
             to.isOnDreamTeam = from.isOnDreamTeam;
         if (from.currentlyInNba)
             to.currentlyInNba = from.currentlyInNba;
+        BballPlayerFactory.prototype.setMvpData(from, to);
+        BballPlayerFactory.prototype.setFinalsMvpData(from, to);
         BballPlayerFactory.prototype.setAllNbaTeamData(from, to);
         BballPlayerFactory.prototype.setAllStarData(from, to);
         BballPlayerFactory.prototype.addPositions(from, to);
         BballPlayerFactory.prototype.addAliases(from, to);
+    }
+
+    setMvpData(from: BballPlayer, to: BballPlayer) {
+        if (from.numberOfTimesMvp)
+            to.numberOfTimesMvp = from.numberOfTimesMvp;
+        if (from.mvpSeasons)
+            to.mvpSeasons = from.mvpSeasons;
+    }
+
+    setFinalsMvpData(from: BballPlayer, to: BballPlayer) {
+        if (from.numberOfTimesFinalsMvp)
+            to.numberOfTimesFinalsMvp = from.numberOfTimesFinalsMvp;
+        if (from.finalsMvpYears)
+            to.finalsMvpYears = from.finalsMvpYears;
     }
 
     setAllNbaTeamData(from: BballPlayer, to: BballPlayer) {

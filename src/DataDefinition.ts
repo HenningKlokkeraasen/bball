@@ -4,6 +4,7 @@
 /// <reference path="Extractors/FiftyGreatestExtractor.ts" />
 /// <reference path="Extractors/DreamTeamExtractor.ts" />
 /// <reference path="Extractors/MvpExtractor.ts" />
+/// <reference path="Extractors/FinalsMvpExtractor.ts" />
 /// <reference path="Extractors/AllStarExtractor.ts" />
 /// <reference path="Extractors/AllNbaTeamExtractor.ts" />
 
@@ -13,6 +14,7 @@ var hofMapper = new HallOfFameExtractor($, htmlExtractor);
 var fgMapper = new FiftyGreatestExtractor($, htmlExtractor);
 var dtMapper = new DreamTeamExtractor($, htmlExtractor);
 var mvpMapper = new MvpExtractor($, htmlExtractor);
+var finalsMvpMapper = new FinalsMvpExtractor($, htmlExtractor);
 var asgMapper = new AllStarExtractor($, htmlExtractor);
 var antMapper = new AllNbaTeamExtractor($, htmlExtractor);
 
@@ -40,6 +42,12 @@ var dataDefinition = [
         tabHeading: 'NBA MVP',
         wikipediaPageUrlSegment : 'NBA_Most_Valuable_Player_Award',
         mappingFunction: mvpMapper.mapTableOfPlayersToArray
+    },
+    {
+        heading: 'NBA Finals Most Valuable Player Award',
+        tabHeading: 'NBA Finals MVP',
+        wikipediaPageUrlSegment : 'Bill_Russell_NBA_Finals_Most_Valuable_Player_Award',
+        mappingFunction: finalsMvpMapper.mapTableOfPlayersToArray
     },
     {
         heading: 'NBA All-Star',
