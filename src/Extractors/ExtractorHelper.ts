@@ -14,4 +14,25 @@ class ExtractorHelper {
             name: name
         }
     }
+
+    extractRowsFromTable(html, textInFirstCell: string) {
+        var rows = new Array();
+		$.each(html, function(i, child) {
+			if ($(child).is('table.wikitable')) {
+                var tbody = $(child).children()[0];
+                var tr = $(tbody).children()[0];
+                var cell = $(tr).children()[0];
+                var text = cell.innerHTML;
+                if (text == textInFirstCell)
+                {
+                    $.each($(child).find('tr'), function(j, tr) {
+                        if (j > 0) {
+                            rows.push(tr);
+                        }
+                    });
+                }
+			}
+		});
+        return rows;
+    }
 }

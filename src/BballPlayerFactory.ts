@@ -20,6 +20,7 @@ class BballPlayerFactory {
             to.currentlyInNba = from.currentlyInNba;
         BballPlayerFactory.prototype.setMvpData(from, to);
         BballPlayerFactory.prototype.setFinalsMvpData(from, to);
+        BballPlayerFactory.prototype.setAllStarMvpData(from, to);
         BballPlayerFactory.prototype.setAllNbaTeamData(from, to);
         BballPlayerFactory.prototype.setAllStarData(from, to);
         BballPlayerFactory.prototype.addPositions(from, to);
@@ -38,6 +39,13 @@ class BballPlayerFactory {
             to.numberOfTimesFinalsMvp = from.numberOfTimesFinalsMvp;
         if (from.finalsMvpYears)
             to.finalsMvpYears = from.finalsMvpYears;
+    }
+
+    setAllStarMvpData(from: BballPlayer, to: BballPlayer) {
+        if (from.numberOfTimesAllStarMvp)
+            to.numberOfTimesAllStarMvp = from.numberOfTimesAllStarMvp;
+        if (from.allStarMvpYears)
+            to.allStarMvpYears = from.allStarMvpYears;
     }
 
     setAllNbaTeamData(from: BballPlayer, to: BballPlayer) {

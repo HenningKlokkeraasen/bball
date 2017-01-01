@@ -22,8 +22,16 @@
     background-color: rgba(218, 104, 10, 0.64);
 }
 
+.allStarMvp {
+    background-color: rgba(74, 230, 178, 0.62);
+}
+
 .asg {
     background-color: rgba(148, 99, 169, 0.92);
+}
+
+.allNbaTeam {
+    background-color: rgba(116, 230, 66, 0.52);
 }
 
 .currentlyInNba {
