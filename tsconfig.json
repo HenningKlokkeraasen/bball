@@ -21,6 +21,8 @@
         "src/BballPlayerArrayJoiner.ts",
         "src/BballPlayerAliasFinder.ts",
         "src/BballPlayerFactory.ts",
+
+        "src/Ranking/CombinedScoreCalculator.ts",
         
         "src/DataDefinition.ts",
         "src/App.ts",

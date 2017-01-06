@@ -29,6 +29,8 @@ interface BballPlayer {
     aliases?: string;
     
     currentlyInNba?: boolean;
+
+    combinedScore?: number;
 }
 
 interface Link {

@@ -2,6 +2,8 @@
 /// <reference path="Definitions.ts" />
 /// <reference path="BballAliasFinder.ts" />
 /// <reference path="BballPlayerFactory.ts" />
+/// <reference path="Ranking/CombinedScoreCalculator.ts" />
+
 
 class BballPlayerArrayJoiner {
     combine(bunchOfPlayers: Array<Array<BballPlayer>>) {
@@ -17,6 +19,7 @@ class BballPlayerArrayJoiner {
                     BballPlayerFactory.prototype.copyNotNullProperties(player, existingPlayer)
             });
         };
+        combinedPlayers.forEach(player => player.combinedScore = CombinedScoreCalculator.prototype.calculateScore(player));
         return combinedPlayers;
 	}
 }

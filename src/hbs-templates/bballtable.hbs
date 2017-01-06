@@ -7,7 +7,7 @@
         <tr>
             <th colspan="10"></th>
             <th colspan="3">All-NBA Team count</th>
-            <th></th>
+            <th colspan="2"></th>
         </tr>
         <tr>
             <th>#</th>
@@ -25,6 +25,7 @@
             <th>3rd</th>
             <th>Currently in NBA
                 or HOF year</th>
+            <th>Combined Score</th>
         </tr>
         </thead>
         <tbody>
@@ -62,6 +63,7 @@
                 {{#if yearInductedInHof}} class="hof" {{/if}}>
                 {{#if currentlyInNba}}Currently in NBA{{/if}}
                 {{#if yearInductedInHof}}HOF: {{yearInductedInHof}}{{/if}}</td>
+            <td>{{combinedScore}}</td>
         </tr>
         {{/each}}
         </tbody>
