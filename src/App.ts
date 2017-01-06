@@ -35,43 +35,53 @@ class App {
         return promises;
     }
 
-    renderInDom(data: Array<any>, arrayOfResults: Array<any>) {
+    renderInDom(tabs: Array<any>, arrayOfArrayOfBballPlayer: Array<any>) {
         var self = this;
         var bunchOfPlayers = new Array<Array<BballPlayer>>();
 
-        for (var i = 0; i < arrayOfResults.length; i++){
-            var safeDomId = data[i].wikipediaPageUrlSegment.replace('%27', '');
+        for (var i = 0; i < arrayOfArrayOfBballPlayer.length; i++){
+            var safeDomId = tabs[i].wikipediaPageUrlSegment.replace('%27', '');
             self._domIntegrator.renderBballPlayerTab(
-                data[i].tabHeading,
+                tabs[i].tabHeading,
                 safeDomId,
                 i === 0,
                 "placeholderTabs"
             );
             self._domIntegrator.renderBballPlayerTable(
-                data[i].heading,
+                tabs[i].heading,
+                tabs[i].bodyText,
                 safeDomId,
-                data[i].wikipediaPageUrlSegment,
+                [self.makeWikipediaLink(tabs[i].wikipediaPageUrlSegment, tabs[i].heading)],
                 i === 0,
-                arrayOfResults[i],
+                arrayOfArrayOfBballPlayer[i],
                 "placeholderTabContent"
             );
-            bunchOfPlayers[safeDomId] = arrayOfResults[i];
+            bunchOfPlayers[safeDomId] = arrayOfArrayOfBballPlayer[i];
         }
         
         var combinedPlayers = self._combiner.combine(bunchOfPlayers);
         self._domIntegrator.renderBballPlayerTab(
-            "Combined!",
+            "Combined",
             "combined",
             false,
             "placeholderTabs"
         );
         self._domIntegrator.renderBballPlayerTable(
-            "Combined!", 
+            "Combined", 
+            "Combined list of accolades for all players",
             "combined",
-            null,
+            tabs.map(e => self.makeWikipediaLink(e.wikipediaPageUrlSegment, e.heading)),
             false,
             combinedPlayers,
             "placeholderTabContent"
         );
+    }
+
+    makeWikipediaLink(wikipediaPageUrlSegment: string, title: string) : Link  {
+        return {
+            uri: `https://en.wikipedia.org/wiki/${wikipediaPageUrlSegment}`,
+            title: `Wikipedia: ${title}`,
+            openInNewTab: true
+        };
     }
 }

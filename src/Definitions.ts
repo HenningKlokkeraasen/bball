@@ -30,3 +30,9 @@ interface BballPlayer {
     
     currentlyInNba?: boolean;
 }
+
+interface Link {
+    uri: string,
+    title: string,
+    openInNewTab?: boolean
+}

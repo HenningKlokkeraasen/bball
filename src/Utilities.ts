@@ -21,13 +21,15 @@ class Logger {
 }
 
 class DomRenderer {
-	renderBballPlayerTable(heading: string, domId: string, wikipediaUrlSegment: string, isActive: boolean, arrayOfPlayerObjects: Array<BballPlayer>, placeholderId: string) {
+	renderBballPlayerTable(heading: string, bodyText: string, domId: string, sourceLinks: Array<Link>, isActive: boolean, arrayOfPlayerObjects: Array<BballPlayer>, placeholderId: string) {
 		var html = Handlebars.templates['bballtable.hbs']({
-			heading: heading, 
+			heading: heading,
+			bodyText: bodyText,
 			items: arrayOfPlayerObjects,
 			isActive: isActive,
 			domId: domId,
-			wikipediaUrlSegment: wikipediaUrlSegment
+			sourceLinks: sourceLinks,
+			moreThanOneSourceLink: sourceLinks && sourceLinks.length > 1
 		});
 		document.getElementById(placeholderId).innerHTML += html;
 		$(`#${domId} table`).DataTable({
