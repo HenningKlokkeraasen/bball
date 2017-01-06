@@ -1,3 +1,6 @@
+.footer {
+    min-height: 100px;
+}
 .table-hover > tbody > tr:hover {
     background-color: rgba(51, 122, 183, 0.62);
 }
