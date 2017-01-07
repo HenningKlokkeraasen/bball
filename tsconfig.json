@@ -5,26 +5,31 @@
         "lib": ["dom", "es2015.promise", "es5"]
     },
     "files": [
-        "src/Integration/WikipediaIntegrator.ts",
         "src/Utilities.ts",
         
-        "src/Extractors/FiftyGreatestExtractor.ts",
-        "src/Extractors/DreamTeamExtractor.ts",
-        "src/Extractors/HallOfFameExtractor.ts",
-        "src/Extractors/MvpExtractor.ts",
-        "src/Extractors/FinalsMvpExtractor.ts",
-        "src/Extractors/AllStarMvpExtractor.ts",
-        "src/Extractors/AllStarExtractor.ts",
-        "src/Extractors/AllNbaTeamExtractor.ts",
-        "src/Extractors/ExtractorHelper.ts",
+        "src/WikipediaIntegration/WikipediaIntegrator.ts",
+        "src/WikipediaIntegration/Extractors/FiftyGreatestExtractor.ts",
+        "src/WikipediaIntegration/Extractors/DreamTeamExtractor.ts",
+        "src/WikipediaIntegration/Extractors/HallOfFameExtractor.ts",
+        "src/WikipediaIntegration/Extractors/MvpExtractor.ts",
+        "src/WikipediaIntegration/Extractors/FinalsMvpExtractor.ts",
+        "src/WikipediaIntegration/Extractors/AllStarMvpExtractor.ts",
+        "src/WikipediaIntegration/Extractors/AllStarExtractor.ts",
+        "src/WikipediaIntegration/Extractors/AllNbaTeamExtractor.ts",
+        "src/WikipediaIntegration/Extractors/NbaChampionshipExtractor.ts",
+        "src/WikipediaIntegration/Extractors/ExtractorHelper.ts",
         
+        "src/Accolades.ts",
+
         "src/BballPlayerArrayJoiner.ts",
-        "src/BballPlayerAliasFinder.ts",
+        "src/BballAliasFinder.ts",
         "src/BballPlayerFactory.ts",
 
         "src/Ranking/CombinedScoreCalculator.ts",
+
+        "src/BrowserApis/DomRenderer.ts",
+        "src/BrowserApis/LocalStorageIntegrator.ts",
         
-        "src/DataDefinition.ts",
         "src/App.ts",
         "src/Startup.ts"
     ]

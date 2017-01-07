@@ -31,10 +31,26 @@ interface BballPlayer {
     currentlyInNba?: boolean;
 
     combinedScore?: number;
+
+    numberOfNbaChampionships?: number;
+    nbaChampionshipYears?: Array<number>;
 }
 
 interface Link {
     uri: string,
     title: string,
     openInNewTab?: boolean
+}
+
+interface Accolade {
+    tabHeading: string,
+    heading: string,
+    bodyText?: string,
+    wikipediaPageUrlSegment : string,
+    extractor: IWikipediaExtractor
+}
+
+interface IWikipediaExtractor {
+    extractBballPlayerArray(content: string);
+    // extractBballPlayerArray: () => Array<BballPlayer>;
 }

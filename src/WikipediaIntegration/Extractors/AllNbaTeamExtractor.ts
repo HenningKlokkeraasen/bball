@@ -1,27 +1,26 @@
 /// <reference path="ExtractorHelper.ts" />
-/// <reference path="../Definitions.ts" />
+/// <reference path="../../Definitions.ts" />
 
 
 
-class AllNbaTeamExtractor {
-    constructor(public jQuery, public htmlExtractor: ExtractorHelper) { }
-    
-    mapTableOfPlayersToArray = (content: string) => {
-		var html = this.jQuery.parseHTML(content);
+class AllNbaTeamExtractor implements IWikipediaExtractor {
+
+    extractBballPlayerArray = (content: string) => {
+		var html = $.parseHTML(content);
 		var arrayOfPlayerObjects = [];
 		var foundCount = 0;
-        var that = this;
-		that.jQuery.each(html, function(i, child) {
-			if (that.jQuery(child).is('table.wikitable')) {
-				if (that.jQuery(child).children().children().length > 10 && foundCount < 3)
+        var self = this;
+		$.each(html, function(i, child) {
+			if ($(child).is('table.wikitable')) {
+				if ($(child).children().children().length > 10 && foundCount < 3)
 				{
 					foundCount++;
 
 
 
-						that.jQuery.each(that.jQuery(child).find('tr'), function(j, tr) {
+						$.each($(child).find('tr'), function(j, tr) {
                             if (j > 1) {
-								that.extractPlayerFromRow(tr, arrayOfPlayerObjects);
+								self.extractPlayerFromRow(tr, arrayOfPlayerObjects);
 							}
 					    	});
 					
@@ -32,7 +31,7 @@ class AllNbaTeamExtractor {
     }
     
     extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<BballPlayer>) {
-        var firstCell = this.jQuery(tr).children()[0];
+        var firstCell = $(tr).children()[0];
         var isFirstRow = firstCell.attributes["rowspan"];
 
         var indexOfFirstPlayerCell = isFirstRow ? 1 : 0;
@@ -81,12 +80,12 @@ class AllNbaTeamExtractor {
     }
 
     extractPlayerFromCell(tr, arrayOfPlayerObjects: Array<BballPlayer>, index: number) {
-        var cell = this.jQuery(tr).children()[index];
+        var cell = $(tr).children()[index];
         var values  = undefined;
         var player = undefined;
         var currentlyInNba  = undefined;
         if (cell) {
-            values = this.htmlExtractor.extractPlayerValuesFromLinkInCell(cell);
+            values = ExtractorHelper.prototype.extractPlayerValuesFromLinkInCell(cell);
             currentlyInNba = cell.innerText.indexOf("^") > 0
             player = arrayOfPlayerObjects.find(p => BballAliasFinder.prototype.findByIdOrAlternateId(p, values.id));
         }

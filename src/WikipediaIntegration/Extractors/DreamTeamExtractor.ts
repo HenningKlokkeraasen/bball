@@ -1,12 +1,12 @@
 /// <reference path="ExtractorHelper.ts" />
-/// <reference path="../Definitions.ts" />
+/// <reference path="../../Definitions.ts" />
 
 
 
-class DreamTeamExtractor {
+class DreamTeamExtractor implements IWikipediaExtractor {
     constructor(public jQuery, public htmlExtractor: ExtractorHelper) { }
     
-    mapTableOfPlayersToArray = (content: string) => {
+    extractBballPlayerArray = (content: string) => {
 		var html = this.jQuery.parseHTML(content);
 		var arrayOfPlayerObjects = [];
 		var found = false;

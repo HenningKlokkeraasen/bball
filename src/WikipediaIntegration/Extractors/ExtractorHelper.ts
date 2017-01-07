@@ -15,7 +15,7 @@ class ExtractorHelper {
         }
     }
 
-    extractRowsFromTable(html, textInFirstCell: string) {
+    extractRowsFromWikiTable(html, textInFirstCell: string) {
         var rows = new Array();
 		$.each(html, function(i, child) {
 			if ($(child).is('table.wikitable')) {
@@ -32,6 +32,18 @@ class ExtractorHelper {
                     });
                 }
 			}
+		});
+        return rows;
+    }
+
+    extractRowsFromRosterTable(html) {
+        var rows = new Array();
+        $.each($(html).find('table.sortable'), function(i, child) {
+            var tbody = $(child).find('tbody')[0];
+            $.each($(tbody).children(), function(j, tr) {
+                if (j > 0)
+                    rows.push(tr);
+            });
 		});
         return rows;
     }

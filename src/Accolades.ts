@@ -1,14 +1,14 @@
 /// <reference path="../ts-dts/jquery.d.ts" />
-/// <reference path="Extractors/ExtractorHelper.ts" />
-/// <reference path="Extractors/HallOfFameExtractor.ts" />
-/// <reference path="Extractors/FiftyGreatestExtractor.ts" />
-/// <reference path="Extractors/DreamTeamExtractor.ts" />
-/// <reference path="Extractors/MvpExtractor.ts" />
-/// <reference path="Extractors/FinalsMvpExtractor.ts" />
-/// <reference path="Extractors/AllStarMvpExtractor.ts" />
-/// <reference path="Extractors/AllStarExtractor.ts" />
-/// <reference path="Extractors/AllNbaTeamExtractor.ts" />
-
+/// <reference path="WikipediaIntegration/Extractors/ExtractorHelper.ts" />
+/// <reference path="WikipediaIntegration/Extractors/HallOfFameExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/FiftyGreatestExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/DreamTeamExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/MvpExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/FinalsMvpExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/AllStarMvpExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/AllStarExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/AllNbaTeamExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/NbaChampionshipExtractor.ts" />
 
 var htmlExtractor = new ExtractorHelper();
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);
@@ -18,55 +18,62 @@ var mvpMapper = new MvpExtractor();
 var finalsMvpMapper = new FinalsMvpExtractor();
 var allStarMvpMapper = new AllStarMvpExtractor();
 var asgMapper = new AllStarExtractor($, htmlExtractor);
-var antMapper = new AllNbaTeamExtractor($, htmlExtractor);
+var antMapper = new AllNbaTeamExtractor();
+var nbaChampionshipExtractor = new NbaChampionshipExtractor(new NbaChampionshipPlayerExtractor());
 
-var dataDefinition = [
+var accolades = [
     {
         heading: 'List of players in the Naismith Memorial Basketball Hall of Fame',
         tabHeading: 'Hall of Fame',
         wikipediaPageUrlSegment : 'List_of_players_in_the_Naismith_Memorial_Basketball_Hall_of_Fame',
-        mappingFunction: hofMapper.mapTableOfPlayersToArray
+        extractor: hofMapper
     },
     {
         heading: 'Dream Team (1992 United States men\'s Olympic basketball team)',
         tabHeading: 'Dream Team',
         wikipediaPageUrlSegment : '1992_United_States_men%27s_Olympic_basketball_team',
-        mappingFunction: dtMapper.mapTableOfPlayersToArray
+        extractor: dtMapper
     },
     {
         heading: '50 Greatest Players in NBA History',
         tabHeading: '50 Greatest',
         wikipediaPageUrlSegment : '50_Greatest_Players_in_NBA_History',
-        mappingFunction: fgMapper.mapTableOfPlayersToArray
+        extractor: fgMapper
     },
     {
         heading: 'NBA Most Valuable Player Award',
         tabHeading: 'NBA MVP',
         wikipediaPageUrlSegment : 'NBA_Most_Valuable_Player_Award',
-        mappingFunction: mvpMapper.mapTableOfPlayersToArray
+        extractor: mvpMapper
     },
     {
         heading: 'NBA Finals Most Valuable Player Award',
         tabHeading: 'NBA Finals MVP',
         wikipediaPageUrlSegment : 'Bill_Russell_NBA_Finals_Most_Valuable_Player_Award',
-        mappingFunction: finalsMvpMapper.mapTableOfPlayersToArray
+        extractor: finalsMvpMapper
     },
     {
         heading: 'NBA All-Star Game Most Valuable Player Award',
-        tabHeading: 'NBA All-Star Game MVP',
+        tabHeading: 'NBA ASG MVP',
         wikipediaPageUrlSegment : 'NBA_All-Star_Game_Most_Valuable_Player_Award',
-        mappingFunction: allStarMvpMapper.mapTableOfPlayersToArray
+        extractor: allStarMvpMapper
     },
     {
         heading: 'NBA All-Star',
         tabHeading: 'NBA All-Star',
         wikipediaPageUrlSegment : 'List_of_NBA_All-Stars',
-        mappingFunction: asgMapper.mapTableOfPlayersToArray
+        extractor: asgMapper
     },
     {
         heading: 'All-NBA Team',
         tabHeading: 'All-NBA Team',
         wikipediaPageUrlSegment : 'All-NBA_Team',
-        mappingFunction: antMapper.mapTableOfPlayersToArray
+        extractor: antMapper
+    },
+    {
+        heading: 'NBA Championships',
+        tabHeading: 'NBA Championships',
+        wikipediaPageUrlSegment : 'List_of_NBA_champions',
+        extractor: nbaChampionshipExtractor
     }
 ];

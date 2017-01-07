@@ -1,15 +1,15 @@
 /// <reference path="ExtractorHelper.ts" />
-/// <reference path="../Definitions.ts" />
-/// <reference path="../BballAliasFinder.ts" />
-/// <reference path="../BballPlayerFactory.ts" />
+/// <reference path="../../Definitions.ts" />
+/// <reference path="../../BballAliasFinder.ts" />
+/// <reference path="../../BballPlayerFactory.ts" />
 
-class MvpExtractor {
-	mapTableOfPlayersToArray = (content: string) => {
+class MvpExtractor implements IWikipediaExtractor {
+	extractBballPlayerArray = (content: string) => {
 		var html = $.parseHTML(content);
 		var arrayOfPlayerObjects = new Array();
         
 		var self = this;
-        var rows = ExtractorHelper.prototype.extractRowsFromTable(html, 'Season');
+        var rows = ExtractorHelper.prototype.extractRowsFromWikiTable(html, 'Season');
         rows.forEach(row => self.extractPlayerFromRow(row, arrayOfPlayerObjects));
         
 		return arrayOfPlayerObjects;

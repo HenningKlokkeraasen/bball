@@ -3,12 +3,16 @@
 class CombinedScoreCalculator {
     calculateScore(player: BballPlayer) : number {
         var score = 0;
+        
         if (player.isOnDreamTeam)
             score += WeightedScoreKeeper.DreamTeam;
         if (player.isOnFiftyGreatesList)
             score += WeightedScoreKeeper.FiftyGreatest;
         if (player.yearInductedInHof)
             score += WeightedScoreKeeper.HallOfFame;
+
+        if (player.numberOfNbaChampionships)
+            score += player.numberOfNbaChampionships * WeightedScoreKeeper.NbaChamp;
 
         if (player.numberOfTimesMvp)
             score += player.numberOfTimesMvp * WeightedScoreKeeper.Mvp;
@@ -26,6 +30,7 @@ class CombinedScoreCalculator {
             score += player.numberOfTimesAllNbaSecondTeam * WeightedScoreKeeper.AllNbaSecond;
         if (player.numberOfTimesAllNbaThirdTeam)
             score += player.numberOfTimesAllNbaThirdTeam * WeightedScoreKeeper.AllNbaThird;
+
         return score;
     }
 }
@@ -34,6 +39,8 @@ class WeightedScoreKeeper {
     public static readonly DreamTeam = 100;
     public static readonly FiftyGreatest = 100;
     public static readonly HallOfFame = 100;
+    
+    public static readonly NbaChamp = 100;
     
     public static readonly Mvp = 100;
     public static readonly FinalsMvp = 100;
