@@ -3,6 +3,7 @@ const HttpDispatcher = require('httpdispatcher');
 
 const dataProvider = require('./dataprovider.js');
 const nbamvps = require('./mappers/nbamvps.js');
+const nbafinalsmvps = require('./mappers/nbafinalsmvps.js');
 const fiftygreatest = require('./mappers/50greatest.js');
 
 const dispatcher = new HttpDispatcher();
@@ -13,6 +14,7 @@ http.createServer(handleRequest)
 console.log('Web server listening on localhost:1337');
 
 setupApi('nbamvps', nbamvps.mapToJson);
+setupApi('nbafinalsmvps', nbafinalsmvps.mapToJson);
 setupApi('50greatest', fiftygreatest.mapToJson);
 
 function handleRequest(req, res) {

@@ -7,12 +7,12 @@ for various lists of accolades for basketball players (mainly in the NBA),
 and collates them to a single matrix.
 
 ## Accolades and awards
-- [ ] 50 Greatest players
+- [x] 50 Greatest players
 - [ ] Dream Team
 - [ ] Hall of Fame
 - [ ] NBA Championship titles
 - [x] NBA Most Valuable Player (MVP)
-- [ ] NBA Finals MVPs
+- [x] NBA Finals MVPs
 - [ ] All-NBA Team selections
 - [ ] All-Defensive Team selections
 - [ ] All-Rookie Team selections

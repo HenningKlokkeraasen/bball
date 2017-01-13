@@ -45,8 +45,8 @@ class BballPlayerFactory {
     setFinalsMvpData(from: BballPlayer, to: BballPlayer) {
         if (from.numberOfTimesFinalsMvp)
             to.numberOfTimesFinalsMvp = from.numberOfTimesFinalsMvp;
-        if (from.finalsMvpYears)
-            to.finalsMvpYears = from.finalsMvpYears;
+        if (from.finalsMvpSeasons)
+            to.finalsMvpSeasons = from.finalsMvpSeasons;
     }
 
     setAllStarMvpData(from: BballPlayer, to: BballPlayer) {

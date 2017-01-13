@@ -23,12 +23,12 @@ var accolades = [
         urlSegment: 'api/nbamvps',
         sourceUrl: 'http://www.basketball-reference.com/awards/mvp.html',
     },
-//     {
-//         heading: 'NBA Finals Most Valuable Player Award',
-//         tabHeading: 'NBA Finals MVP',
-//         wikipediaPageUrlSegment : 'Bill_Russell_NBA_Finals_Most_Valuable_Player_Award',
-//         extractor: finalsMvpMapper
-//     },
+    {
+        heading: 'NBA Finals Most Valuable Player Award',
+        tabHeading: 'NBA Finals MVP',
+        urlSegment: 'api/nbafinalsmvps',
+        sourceUrl: 'http://www.basketball-reference.com/awards/finals_mvp.html'
+    },
 //     {
 //         heading: 'NBA All-Star Game Most Valuable Player Award',
 //         tabHeading: 'NBA ASG MVP',
