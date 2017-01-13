@@ -6,7 +6,7 @@ class CombinedScoreCalculator {
         
         if (player.isOnDreamTeam)
             score += WeightedScoreKeeper.DreamTeam;
-        if (player.isOnFiftyGreatesList)
+        if (player.isOnFiftyGreatestList)
             score += WeightedScoreKeeper.FiftyGreatest;
         if (player.yearInductedInHof)
             score += WeightedScoreKeeper.HallOfFame;

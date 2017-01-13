@@ -11,12 +11,12 @@ var accolades = [
 //         wikipediaPageUrlSegment : '1992_United_States_men%27s_Olympic_basketball_team',
 //         extractor: dtMapper
 //     },
-//     {
-//         heading: '50 Greatest Players in NBA History',
-//         tabHeading: '50 Greatest',
-//         wikipediaPageUrlSegment : '50_Greatest_Players_in_NBA_History',
-//         extractor: fgMapper
-//     },
+    {
+        heading: '50 Greatest Players in NBA History',
+        tabHeading: '50 Greatest',
+        urlSegment: 'api/50greatest',
+        sourceUrl: 'http://www.basketball-reference.com/awards/nba_50_greatest.html'
+    },
     {
         heading: 'NBA Most Valuable Player Award',
         tabHeading: 'NBA MVP',

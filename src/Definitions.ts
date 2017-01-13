@@ -3,7 +3,7 @@ interface BballPlayer {
     name: string;
     position?: string;
 
-    isOnFiftyGreatesList?: boolean;
+    isOnFiftyGreatestList?: boolean;
     
     isOnDreamTeam?: boolean;
 

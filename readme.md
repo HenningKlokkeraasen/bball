@@ -26,10 +26,15 @@ and collates them to a single matrix.
 - [ ] Olympic Gold, Silver and Bronze medals
 - [ ] FIBA World Cup Gold, Silver and Bronze medals
 
+## Combined score
+
+A subjective combined score is calculated based on the awards and accolades.
+
 ## Setting up
 
 Data sources (download csv to \data\):
 - http://www.basketball-reference.com/awards/mvp.html -> nbvamvps.csv
+- http://www.basketball-reference.com/awards/nba_50_greatest.html -> 50greatest.csv
 
 Dev environment:
 - See setup-dev-env.cmd (Windows)

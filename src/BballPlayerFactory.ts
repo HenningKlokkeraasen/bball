@@ -10,8 +10,8 @@ class BballPlayerFactory {
     }
 
     copyNotNullProperties(from: BballPlayer, to: BballPlayer) {
-        if (from.isOnFiftyGreatesList)
-            to.isOnFiftyGreatesList = from.isOnFiftyGreatesList;
+        if (from.isOnFiftyGreatestList)
+            to.isOnFiftyGreatestList = from.isOnFiftyGreatestList;
         if (from.yearInductedInHof)
             to.yearInductedInHof = from.yearInductedInHof;
         if (from.isOnDreamTeam)
