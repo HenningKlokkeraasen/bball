@@ -34,7 +34,7 @@ class AllStarExtractor implements IWikipediaExtractor {
     extractPlayerFromRow(tr, arrayOfPlayerObjects: Array<BballPlayer>) {
         var firstCell = this.jQuery(tr).children()[0];
         var playerValues = this.htmlExtractor.extractPlayerValuesFromLinkInCell(firstCell);
-        var currentlyInNba = firstCell.innerText.indexOf("^") > 0
+        var currentlyInNba = firstCell.innerText.indexOf("^") > -1
         var secondCell = this.jQuery(tr).children()[1];
         var appearancesText = this.jQuery(secondCell).text();
         var appearancesNumber = parseInt(appearancesText);

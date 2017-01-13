@@ -1,7 +1,7 @@
 interface BballPlayer {
     id: string;
     name: string;
-    position: string;
+    position?: string;
 
     isOnFiftyGreatesList?: boolean;
     

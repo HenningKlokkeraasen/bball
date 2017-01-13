@@ -12,12 +12,15 @@ class DataProvider {
         return new Promise<T>(function(resolve, reject) {
             LocalStorageIntegrator.prototype.getFromStorage(key)
                 .then(function(result) {
+                    // console.debug(`got from LS ${key}`);
                     var deserialized = JSON.parse(result);
                     resolve(deserialized);
                 })
                 .catch(function(err) {
+                    // console.debug(`getting from remote ${key}`);
                     getFromRemote(key)
                         .then(function (result) {
+                            // console.debug(result);
                             var bballPlayerArray = extractor.extractBballPlayerArray(result);
                             LocalStorageIntegrator.prototype.saveInStorage(key, JSON.stringify(bballPlayerArray));
                             resolve(bballPlayerArray);

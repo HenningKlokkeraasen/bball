@@ -16,9 +16,15 @@
         "src/WikipediaIntegration/Extractors/AllStarMvpExtractor.ts",
         "src/WikipediaIntegration/Extractors/AllStarExtractor.ts",
         "src/WikipediaIntegration/Extractors/AllNbaTeamExtractor.ts",
-        "src/WikipediaIntegration/Extractors/NbaChampionshipExtractor.ts",
         "src/WikipediaIntegration/Extractors/ExtractorHelper.ts",
         
+        "src/WikipediaIntegration/Extractors/NbaChampionship/NbaChampionshipExtractor.ts",
+        "src/WikipediaIntegration/Extractors/NbaChampionship/NbaChampionshipPlayerExtractor.ts",
+        "src/WikipediaIntegration/Extractors/NbaChampionship/NbaChampionshipTeamExtractor.ts",
+        "src/WikipediaIntegration/Extractors/NbaChampionship/RosterTableExtractor.ts",
+        "src/WikipediaIntegration/Extractors/NbaChampionship/RosterNavboxExtractor.ts",
+        "src/WikipediaIntegration/Extractors/NbaChampionship/DepthChartExtractor.ts",
+
         "src/Accolades.ts",
 
         "src/BballPlayerArrayJoiner.ts",

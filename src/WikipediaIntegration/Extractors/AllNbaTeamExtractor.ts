@@ -86,7 +86,7 @@ class AllNbaTeamExtractor implements IWikipediaExtractor {
         var currentlyInNba  = undefined;
         if (cell) {
             values = ExtractorHelper.prototype.extractPlayerValuesFromLinkInCell(cell);
-            currentlyInNba = cell.innerText.indexOf("^") > 0
+            currentlyInNba = cell.innerText.indexOf("^") > -1
             player = arrayOfPlayerObjects.find(p => BballAliasFinder.prototype.findByIdOrAlternateId(p, values.id));
         }
         return {

@@ -8,7 +8,7 @@
 /// <reference path="WikipediaIntegration/Extractors/AllStarMvpExtractor.ts" />
 /// <reference path="WikipediaIntegration/Extractors/AllStarExtractor.ts" />
 /// <reference path="WikipediaIntegration/Extractors/AllNbaTeamExtractor.ts" />
-/// <reference path="WikipediaIntegration/Extractors/NbaChampionshipExtractor.ts" />
+/// <reference path="WikipediaIntegration/Extractors/NbaChampionship/NbaChampionshipExtractor.ts" />
 
 var htmlExtractor = new ExtractorHelper();
 var hofMapper = new HallOfFameExtractor($, htmlExtractor);

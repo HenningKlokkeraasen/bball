@@ -7,7 +7,9 @@ class CrossDomainJsonGetter {
 			$.ajax({
 				url: url,
 				dataType: 'jsonp'
-			}).done(resolve).fail(reject);
+			})
+			.done(resolve)
+			.fail(reject);
 		});
 	}
 }

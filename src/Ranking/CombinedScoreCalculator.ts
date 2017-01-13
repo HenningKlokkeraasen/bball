@@ -44,11 +44,11 @@ class WeightedScoreKeeper {
     
     public static readonly Mvp = 100;
     public static readonly FinalsMvp = 100;
-    public static readonly AllStarMvp = 50;
-    
-    public static readonly AllStar = 25;
 
     public static readonly AllNbaFirst = 100;
     public static readonly AllNbaSecond = 75;
     public static readonly AllNbaThird = 50;
+    
+    public static readonly AllStarMvp = 50;
+    public static readonly AllStar = 25;
 }

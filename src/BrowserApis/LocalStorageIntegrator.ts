@@ -17,8 +17,8 @@ class LocalStorageIntegrator {
 	saveInStorage(key: string, item: string) {
 		return new Promise(function(resolve, reject) {
 			try {
-				// TODO remove temporary skip for NBA championship
-				if (key.indexOf('season') > 1 || key.indexOf('champions') > 1) {
+				// skip NBA championship (stored per season)
+				if (key.indexOf('NBA_champions') > -1) {
 					console.debug('skipping LS for championships');
 					resolve();
 				} else {
