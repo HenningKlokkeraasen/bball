@@ -12,7 +12,7 @@ class BballPlayerArrayJoiner {
         for (var bunchKey in bunchOfPlayers) {
             var arrayOfPlayers = bunchOfPlayers[bunchKey];
             arrayOfPlayers.forEach(function(player) {
-                var existingPlayer = combinedPlayers.find(p => BballAliasFinder.prototype.findByIdOrAlternateId(p, player.id));
+                var existingPlayer = combinedPlayers.find(p => p.id === player.id);
                 if (existingPlayer === undefined)
                     combinedPlayers.push(BballPlayerFactory.prototype.clone(player));
                 else

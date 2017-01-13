@@ -20,5 +20,6 @@ call tsc
 @rem ------run---------
 @rem replace with your path
 call start chrome "file:///E:/Mine dokumenter/GitHub/bball/index.html"
+call node src/server/server.js
 
 @rem exit

@@ -1,7 +1,6 @@
 /// <reference path="../ts-dts/jquery.d.ts" />
 /// <reference path="../ts-dts/handlebars.d.ts" />
 /// <reference path="Utilities.ts" />
-/// <reference path="WikipediaIntegration/WikipediaIntegrator.ts" />
 /// <reference path="BballPlayerArrayJoiner.ts" />
 /// <reference path="Definitions.ts" />
 /// <reference path="Accolades.ts" />

@@ -1,7 +1,6 @@
 /// <reference path="Utilities.ts" />
 /// <reference path="Definitions.ts" />
 /// <reference path="BballPlayerArrayJoiner.ts" />
-/// <reference path="WikipediaIntegration/WikipediaIntegrator.ts" />
 /// <reference path="DataProvider.ts" />
 /// <reference path="BrowserApis/DomRenderer.ts" />
 
@@ -14,14 +13,20 @@ class App {
             .catch(console.error);
     }
 
-    mapAccoladesToPromises(acolades: Array<Accolade>) {
+    mapAccoladesToPromises(accolades: Array<Accolade>) {
         var self = this;
         var promises = [];
-        acolades.forEach(a => promises.push(
+        accolades.forEach(a => promises.push(
             DataProvider.prototype.getFromLocalStorageOrFetchFromRemote<Array<BballPlayer>>(
-                a.wikipediaPageUrlSegment, 
-                WikipediaIntegrator.prototype.getWikiText,
-                a.extractor)));
+                a.urlSegment, 
+                function(key) { 
+                    return new Promise<string>(function(resolve, reject) {
+                        CrossDomainJsonGetter.prototype.getJson(`http://localhost:1337/${key}`)
+                            .then(resolve)
+                            .catch(reject);
+                    });
+                 }
+        )));
         return promises;
     }
 
@@ -30,7 +35,7 @@ class App {
         var bunchOfPlayers = new Array<Array<BballPlayer>>();
 
         for (var i = 0; i < arrayOfArrayOfBballPlayer.length; i++) {
-            var safeDomId = tabs[i].wikipediaPageUrlSegment.replace('%27', '');
+            var safeDomId = tabs[i].urlSegment.replace('/api/', '');
             DomRenderer.prototype.renderBballPlayerTab(
                 tabs[i].tabHeading,
                 safeDomId,
@@ -41,7 +46,7 @@ class App {
                 tabs[i].heading,
                 tabs[i].bodyText,
                 safeDomId,
-                [self.makeWikipediaLink(tabs[i].wikipediaPageUrlSegment, tabs[i].heading)],
+                [self.makeLink(tabs[i].sourceUrl, 'basketball-reference.com')],
                 i === 0,
                 arrayOfArrayOfBballPlayer[i],
                 "placeholderTabContent"
@@ -60,17 +65,17 @@ class App {
             "Combined", 
             "Combined list of accolades for all players",
             "combined",
-            tabs.map(e => self.makeWikipediaLink(e.wikipediaPageUrlSegment, e.heading)),
+            tabs.map(e => self.makeLink(e.sourceUrl, 'basketball-reference.com')),
             false,
             combinedPlayers,
             "placeholderTabContent"
         );
     }
 
-    makeWikipediaLink(wikipediaPageUrlSegment: string, title: string) : Link  {
+    makeLink(url: string, title: string) : Link  {
         return {
-            uri: `https://en.wikipedia.org/wiki/${wikipediaPageUrlSegment}`,
-            title: `Wikipedia: ${title}`,
+            uri: url,
+            title: title,
             openInNewTab: true
         };
     }

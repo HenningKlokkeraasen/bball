@@ -46,11 +46,6 @@ interface Accolade {
     tabHeading: string,
     heading: string,
     bodyText?: string,
-    wikipediaPageUrlSegment : string,
-    extractor: IWikipediaExtractor
-}
-
-interface IWikipediaExtractor {
-    extractBballPlayerArray(content: string);
-    // extractBballPlayerArray: () => Array<BballPlayer>;
+    sourceUrl: string,
+    urlSegment: string
 }
