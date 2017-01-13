@@ -1,3 +1,5 @@
+# Bball
+
 A collated list of basketball players and accolades.
 
 Uses www.basketball-reference.com as a source 
@@ -20,7 +22,9 @@ and collates them to a single matrix.
 - [ ] NBA Most Improved Player (MIP)
 - [ ] NBA 6th Man
 - [ ] NBA league leaders for PTS, AST, REB, STL, BLK, PPG, APG, RPG, SPG, FG%, 3PT%, FT% for all-time, season, game
+- [ ] ABA, BAA and NBL accolades and awards
 - [ ] Olympic Gold, Silver and Bronze medals
+- [ ] FIBA World Cup Gold, Silver and Bronze medals
 
 ## Setting up
 
@@ -39,7 +43,9 @@ see run.cmd for list of handlebars templates to precompile
 
 How to run:
 > node src/server/server.js
+
+How to view
 - open index.html in a browser
 
-OR: How to compile and run, automated (on Windows)
+OR: How to compile, run and view, automated (on Windows)
 > run.cmd
