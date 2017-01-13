@@ -13,13 +13,17 @@
 call handlebars src/hbs-templates/bballtable.hbs -f public/hbs-templates/bballtable.js
 call handlebars src/hbs-templates/bballtab.hbs -f public/hbs-templates/bballtab.js
 
-@rem Typescript compiler
+@rem Compile Typescript
 call tsc
 
 
 @rem ------run---------
+
+@rem open index.html in Chrome
 @rem replace with your path
 call start chrome "file:///E:/Mine dokumenter/GitHub/bball/index.html"
+
+@rem Start web server
 call node src/server/server.js
 
 @rem exit
