@@ -25,6 +25,10 @@ interface BballPlayer {
     numberOfTimesAllNbaFirstTeam?: number;
     numberOfTimesAllNbaSecondTeam?: number;
     numberOfTimesAllNbaThirdTeam?: number;
+
+    allNbaFirstTeamSeasons?: Array<string>;
+    allNbaSecondTeamSeasons?: Array<string>;
+    allNbaThirdTeamSeasons?: Array<string>;
     
     aliases?: string;
     

@@ -1,3 +1,5 @@
+const mappingUtils = require('./mappingUtils.js');
+
 var self = module.exports = {
 
     // parsedCsv: [
@@ -19,7 +21,7 @@ var self = module.exports = {
         var playerValues = player.split(' ');
         var names = playerValues.filter(self.isName);
         var name = names.join(' ');
-        var assumedId = self.generateAssumedId(names);
+        var assumedId = mappingUtils.generateAssumedId(names);
         return { id: assumedId, name: name, yearInductedInHof: year };
     },
 
@@ -35,17 +37,5 @@ var self = module.exports = {
             && nameCandidate.indexOf('Coach') < 0
             && nameCandidate.indexOf('Exec') < 0
             && nameCandidate.indexOf('NBL') < 0
-    },
-
-    generateAssumedId: function(names) {
-        var firstName = names[0];
-        var lastTwoLetters = firstName.substring(0, 2);
-        
-        var lastName = names[names.length - 1];
-        var firstLetters = lastName.length <= 5 ? lastName
-            : lastName.substring(0, 5);
-
-        var assumedId = `${firstLetters.toLowerCase()}${lastTwoLetters.toLowerCase()}01`;
-        return assumedId;
     }
 }

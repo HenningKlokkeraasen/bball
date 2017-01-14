@@ -60,9 +60,18 @@
                     {{/if}}>
                 {{allStarAppearanceCount}}
             </td>
-            <td {{#if numberOfTimesAllNbaFirstTeam}} class="allNbaTeam"{{/if}}>{{numberOfTimesAllNbaFirstTeam}}</td>
-            <td {{#if numberOfTimesAllNbaSecondTeam}} class="allNbaTeam"{{/if}}>{{numberOfTimesAllNbaSecondTeam}}</td>
-            <td {{#if numberOfTimesAllNbaThirdTeam}} class="allNbaTeam"{{/if}}>{{numberOfTimesAllNbaThirdTeam}}</td>
+            <td {{#if numberOfTimesAllNbaFirstTeam}} 
+                    class="allNbaTeam"
+                    title="Seasons: {{#each allNbaFirstTeamSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesAllNbaFirstTeam}}</td>
+            <td {{#if numberOfTimesAllNbaSecondTeam}} 
+                    class="allNbaTeam"
+                    title="Seasons: {{#each allNbaSecondTeamSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesAllNbaSecondTeam}}</td>
+            <td {{#if numberOfTimesAllNbaThirdTeam}} 
+                    class="allNbaTeam"
+                    title="Seasons: {{#each allNbaaThirdTeamSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesAllNbaThirdTeam}}</td>
             <td {{#if currentlyInNba}} class="currentlyInNba" {{/if}}
                 {{#if yearInductedInHof}} class="hof" {{/if}}>
                 {{#if currentlyInNba}}Currently in NBA{{/if}}

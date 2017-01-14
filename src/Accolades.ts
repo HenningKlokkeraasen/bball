@@ -41,12 +41,12 @@ var accolades = [
 //         wikipediaPageUrlSegment : 'List_of_NBA_All-Stars',
 //         extractor: asgMapper
 //     },
-//     {
-//         heading: 'All-NBA Team',
-//         tabHeading: 'All-NBA Team',
-//         wikipediaPageUrlSegment : 'All-NBA_Team',
-//         extractor: antMapper
-//     },
+    {
+        heading: 'All-NBA Team',
+        tabHeading: 'All-NBA Team',
+        urlSegment: 'api/allnbaabateams',
+        sourceUrl: 'http://www.basketball-reference.com/awards/all_league.html'
+    },
 //     {
 //         heading: 'NBA Championships',
 //         tabHeading: 'NBA Championships',

@@ -7,6 +7,7 @@ const nbafinalsmvps = require('./mappers/nbafinalsmvps.js');
 const nbaasgmvps = require('./mappers/nbaasgmvps.js');
 const fiftygreatest = require('./mappers/50greatest.js');
 const halloffame = require('./mappers/halloffame.js');
+const allnbaabateams = require('./mappers/allnbaabateams.js');
 
 const dispatcher = new HttpDispatcher();
 
@@ -20,6 +21,7 @@ setupApi('nbafinalsmvps', nbafinalsmvps.mapToJson);
 setupApi('nbaasgmvps', nbaasgmvps.mapToJson);
 setupApi('50greatest', fiftygreatest.mapToJson);
 setupApi('halloffame', halloffame.mapToJson);
+setupApi('allnbaabateams', allnbaabateams.mapToJson);
 
 function handleRequest(req, res) {
     console.log(`Incoming ${req.url}`);

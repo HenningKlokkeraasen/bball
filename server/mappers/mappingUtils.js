@@ -39,5 +39,20 @@ var self = module.exports = {
             }
         });
         return unique;
+    },
+    
+    generateAssumedId: function(nameArray) {
+        var firstName = nameArray[0];
+        var lastTwoLetters = firstName.substring(0, 2);
+        
+        var lastName = nameArray[nameArray.length - 1].replace('\'', '');
+        var firstLetters = lastName.length <= 5 ? lastName
+            : lastName.substring(0, 5);
+
+        var number = firstName === 'Magic' ? '02' : '01';
+
+        var assumedId = `${firstLetters.toLowerCase()}${lastTwoLetters.toLowerCase()}${number}`;
+
+        return assumedId;
     }
 }

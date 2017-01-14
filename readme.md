@@ -7,13 +7,14 @@ for various lists of accolades for basketball players (mainly in the NBA),
 and collates them to a single matrix.
 
 ## Accolades and awards
-- [x] 50 Greatest players
-- [ ] Dream Team
+### Basketball in general
+- [x] 50 Greatest players in the NBA
 - [x] Hall of Fame
+### NBA seasons
 - [ ] NBA Championship titles
 - [x] NBA Most Valuable Player (MVP)
 - [x] NBA Finals MVPs
-- [ ] All-NBA Team selections
+- [x] All-NBA Team selections
 - [ ] All-Defensive Team selections
 - [ ] All-Rookie Team selections
 - [x] NBA All-Star MVPs
@@ -23,7 +24,11 @@ and collates them to a single matrix.
 - [ ] NBA Most Improved Player (MIP)
 - [ ] NBA 6th Man
 - [ ] NBA league leaders for PTS, AST, REB, STL, BLK, PPG, APG, RPG, SPG, FG%, 3PT%, FT% for all-time, season, game
-- [ ] ABA, BAA and NBL accolades and awards
+### ABA seasons
+- [ ] All-ABA Team selections
+### BAA, NBL, other leagues
+### Olympics and FIBA World Cup
+- [ ] Dream Team
 - [ ] Olympic Gold, Silver and Bronze medals
 - [ ] FIBA World Cup Gold, Silver and Bronze medals
 
@@ -39,6 +44,7 @@ Data sources (download csv to \data\):
 - http://www.basketball-reference.com/awards/all_star_mvp.html -> nbaasgmvps.csv
 - http://www.basketball-reference.com/awards/nba_50_greatest.html -> 50greatest.csv
 - http://www.basketball-reference.com/awards/hof.html -> http://www.convertcsv.com/html-table-to-csv.htm -> halloffame.csv
+- http://www.basketball-reference.com/awards/all_league.html -> allnbaabateams.csv
 
 Dev environment:
 - See setup-dev-env.cmd (Windows)

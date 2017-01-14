@@ -63,6 +63,13 @@ class BballPlayerFactory {
             to.numberOfTimesAllNbaSecondTeam = from.numberOfTimesAllNbaSecondTeam;
         if (from.numberOfTimesAllNbaThirdTeam)
             to.numberOfTimesAllNbaThirdTeam = from.numberOfTimesAllNbaThirdTeam;
+
+        if (from.allNbaFirstTeamSeasons)
+            to.allNbaFirstTeamSeasons = from.allNbaFirstTeamSeasons;
+        if (from.allNbaSecondTeamSeasons)
+            to.allNbaSecondTeamSeasons = from.allNbaSecondTeamSeasons;
+        if (from.allNbaThirdTeamSeasons)
+            to.allNbaThirdTeamSeasons = from.allNbaThirdTeamSeasons;
     }
 
     setAllStarData(from: BballPlayer, to: BballPlayer) {
