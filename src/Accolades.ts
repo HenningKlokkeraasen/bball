@@ -1,10 +1,10 @@
 var accolades = [
-//     {
-//         heading: 'List of players in the Naismith Memorial Basketball Hall of Fame',
-//         tabHeading: 'Hall of Fame',
-//         wikipediaPageUrlSegment : 'List_of_players_in_the_Naismith_Memorial_Basketball_Hall_of_Fame',
-//         extractor: hofMapper
-//     },
+    {
+        heading: 'List of players in the Naismith Memorial Basketball Hall of Fame',
+        tabHeading: 'Hall of Fame',
+        urlSegment: 'api/halloffame',
+        sourceUrl: 'http://www.basketball-reference.com/awards/hof.html'
+    },
 //     {
 //         heading: 'Dream Team (1992 United States men\'s Olympic basketball team)',
 //         tabHeading: 'Dream Team',

@@ -20,7 +20,7 @@ var self = module.exports = {
             var season = rowArr[0];
             var player = rowArr[2];
             var playerValues = player.split('\\');
-            var name = playerValues[0];
+            var name = playerValues[0].replace(' (Tie)', '');
             var id = playerValues[1];
             return { id: id, name: name, season: season }
         });

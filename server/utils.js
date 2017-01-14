@@ -18,7 +18,8 @@ module.exports = {
     parseCsv: function(input) {
         // console.log(input);
         return new Promise(function(resolve, reject) {
-            csvparse(input, {}, function(err, data) {
+            var options = { relax_column_count: true };
+            csvparse(input, options, function(err, data) {
                 if (err)
                     reject(err);
                 resolve(data);

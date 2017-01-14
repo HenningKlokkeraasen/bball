@@ -9,7 +9,7 @@ and collates them to a single matrix.
 ## Accolades and awards
 - [x] 50 Greatest players
 - [ ] Dream Team
-- [ ] Hall of Fame
+- [x] Hall of Fame
 - [ ] NBA Championship titles
 - [x] NBA Most Valuable Player (MVP)
 - [x] NBA Finals MVPs
@@ -38,6 +38,7 @@ Data sources (download csv to \data\):
 - http://www.basketball-reference.com/awards/finals_mvp.html -> nbafinalsmvps.csv
 - http://www.basketball-reference.com/awards/all_star_mvp.html -> nbaasgmvps.csv
 - http://www.basketball-reference.com/awards/nba_50_greatest.html -> 50greatest.csv
+- http://www.basketball-reference.com/awards/hof.html -> http://www.convertcsv.com/html-table-to-csv.htm -> halloffame.csv
 
 Dev environment:
 - See setup-dev-env.cmd (Windows)
