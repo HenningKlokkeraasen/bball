@@ -47,7 +47,11 @@ var self = module.exports = {
                     }
                 }
             } else {
-                var obj = { id: m.id, name: m.name };
+                var obj = { id: m.id, name: m.name};
+                
+                if (m.position !== 'N')
+                    obj.position = m.position;
+
                 if (m.team === '1st' && m.league === 'NBA') {
                     obj.numberOfTimesAllNbaFirstTeam = 1;
                     obj.allNbaFirstTeamSeasons = [m.season];

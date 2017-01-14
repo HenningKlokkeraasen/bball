@@ -35,7 +35,7 @@ class App {
         var bunchOfPlayers = new Array<Array<BballPlayer>>();
 
         for (var i = 0; i < arrayOfArrayOfBballPlayer.length; i++) {
-            var safeDomId = tabs[i].urlSegment.replace('api/', '');
+            var safeDomId = tabs[i].urlSegment.replace('api/', '').replace('/', '-');
             DomRenderer.prototype.renderBballPlayerTab(
                 tabs[i].tabHeading,
                 safeDomId,

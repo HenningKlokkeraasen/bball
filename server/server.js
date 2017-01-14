@@ -6,6 +6,7 @@ const nbamvps = require('./mappers/nbamvps.js');
 const nbafinalsmvps = require('./mappers/nbafinalsmvps.js');
 const nbaasgmvps = require('./mappers/nbaasgmvps.js');
 const fiftygreatest = require('./mappers/50greatest.js');
+const dreamteam = require('./mappers/dreamteam.js');
 const halloffame = require('./mappers/halloffame.js');
 const allnbaabateams = require('./mappers/allnbaabateams.js');
 
@@ -20,6 +21,7 @@ setupApi('nbamvps', nbamvps.mapToJson);
 setupApi('nbafinalsmvps', nbafinalsmvps.mapToJson);
 setupApi('nbaasgmvps', nbaasgmvps.mapToJson);
 setupApi('50greatest', fiftygreatest.mapToJson);
+setupApi('olympicteams/usa1992', dreamteam.mapToJson);
 setupApi('halloffame', halloffame.mapToJson);
 setupApi('allnbaabateams', allnbaabateams.mapToJson);
 

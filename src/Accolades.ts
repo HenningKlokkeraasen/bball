@@ -5,12 +5,12 @@ var accolades = [
         urlSegment: 'api/halloffame',
         sourceUrl: 'http://www.basketball-reference.com/awards/hof.html'
     },
-//     {
-//         heading: 'Dream Team (1992 United States men\'s Olympic basketball team)',
-//         tabHeading: 'Dream Team',
-//         wikipediaPageUrlSegment : '1992_United_States_men%27s_Olympic_basketball_team',
-//         extractor: dtMapper
-//     },
+    {
+        heading: 'Dream Team (1992 United States men\'s Olympic basketball team)',
+        tabHeading: 'Dream Team',
+        urlSegment: 'api/olympicteams/usa1992',
+        sourceUrl: 'http://www.basketball-reference.com/olympics/teams/USA/1992'
+    },
     {
         heading: '50 Greatest Players in NBA History',
         tabHeading: '50 Greatest',
