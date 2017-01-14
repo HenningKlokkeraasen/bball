@@ -4,4 +4,4 @@ public/*
 node_modules/*
 npm-debug.log
 ts-dts/*
-data/*
+server/data/*

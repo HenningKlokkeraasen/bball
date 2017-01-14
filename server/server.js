@@ -4,6 +4,7 @@ const HttpDispatcher = require('httpdispatcher');
 const dataProvider = require('./dataprovider.js');
 const nbamvps = require('./mappers/nbamvps.js');
 const nbafinalsmvps = require('./mappers/nbafinalsmvps.js');
+const nbaasgmvps = require('./mappers/nbaasgmvps.js');
 const fiftygreatest = require('./mappers/50greatest.js');
 
 const dispatcher = new HttpDispatcher();
@@ -15,6 +16,7 @@ console.log('Web server listening on localhost:1337');
 
 setupApi('nbamvps', nbamvps.mapToJson);
 setupApi('nbafinalsmvps', nbafinalsmvps.mapToJson);
+setupApi('nbaasgmvps', nbaasgmvps.mapToJson);
 setupApi('50greatest', fiftygreatest.mapToJson);
 
 function handleRequest(req, res) {
@@ -28,7 +30,7 @@ function setupApi(resource, mapToJson) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET');
 
-        dataProvider.get(`${resource}`, `data/${resource}.csv`, mapToJson)
+        dataProvider.get(`${resource}`, `server/data/${resource}.csv`, mapToJson)
             .then(function(result) {
                 res.writeHead(200, {'Content-Type': 'application/json'});
                 res.write(result);

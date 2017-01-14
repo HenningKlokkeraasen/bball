@@ -29,12 +29,12 @@ var accolades = [
         urlSegment: 'api/nbafinalsmvps',
         sourceUrl: 'http://www.basketball-reference.com/awards/finals_mvp.html'
     },
-//     {
-//         heading: 'NBA All-Star Game Most Valuable Player Award',
-//         tabHeading: 'NBA ASG MVP',
-//         wikipediaPageUrlSegment : 'NBA_All-Star_Game_Most_Valuable_Player_Award',
-//         extractor: allStarMvpMapper
-//     },
+    {
+        heading: 'NBA All-Star Game Most Valuable Player Award',
+        tabHeading: 'NBA ASG MVP',
+        urlSegment: 'api/nbaasgmvps',
+        sourceUrl: 'http://www.basketball-reference.com/awards/all_star_mvp.html'
+    },
 //     {
 //         heading: 'NBA All-Star',
 //         tabHeading: 'NBA All-Star',

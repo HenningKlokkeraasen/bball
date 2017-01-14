@@ -14,7 +14,7 @@ interface BballPlayer {
     finalsMvpSeasons?: Array<string>;
 
     numberOfTimesAllStarMvp?: number;
-    allStarMvpYears?: Array<number>;
+    allStarMvpSeasons?: Array<number>;
 
     yearInductedInHof?: number;
 

@@ -16,6 +16,7 @@ and collates them to a single matrix.
 - [ ] All-NBA Team selections
 - [ ] All-Defensive Team selections
 - [ ] All-Rookie Team selections
+- [x] NBA All-Star MVPs
 - [ ] NBA All-Star selections
 - [ ] NBA Rookie of the Year (ROY)
 - [ ] NBA Defensive Player of the year (DPOY)
