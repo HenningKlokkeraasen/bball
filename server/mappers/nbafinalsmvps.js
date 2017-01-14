@@ -1,26 +1,15 @@
 const mappingUtils = require('./mappingUtils.js');
 
-module.exports = {
-
-    // parsedCsv: [
-    //     lineOneArray[],
-    //     lineTwoArray[],
-    //     ...
-    // ]
+var self = module.exports = {
     mapToJson: function(parsedCsv) {
-        // console.log(parsedCsv);
-        var mapped = mappingUtils.mapMvpishCsvData(parsedCsv);
+        return mappingUtils.mapMvpishCsvToJson(parsedCsv, self.buildObject);
+    },
 
-        var unique = [];
-        mapped.forEach(function(m) {
-            var existing = unique.find(e => e.id === m.id);
-            if (existing) {
-                existing.numberOfTimesFinalsMvp += 1;
-                existing.finalsMvpSeasons.push(m.season);
-            } else {
-                unique.push( { id: m.id, name: m.name, numberOfTimesFinalsMvp: 1, finalsMvpSeasons: [m.season] } );
-            }
-        });
-        return unique;
+    buildObject: function(mvpishObject) {
+        return { 
+            id: mvpishObject.id, 
+            name: mvpishObject.name, 
+            numberOfTimesFinalsMvp: mvpishObject.numberOfTimes, 
+            finalsMvpSeasons: mvpishObject.seasons };
     }
 }

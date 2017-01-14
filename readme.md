@@ -35,6 +35,8 @@ A subjective combined score is calculated based on the awards and accolades.
 
 Data sources (download csv to \data\):
 - http://www.basketball-reference.com/awards/mvp.html -> nbvamvps.csv
+- http://www.basketball-reference.com/awards/finals_mvp.html -> nbafinalsmvps.csv
+- http://www.basketball-reference.com/awards/all_star_mvp.html -> nbaasgmvps.csv
 - http://www.basketball-reference.com/awards/nba_50_greatest.html -> 50greatest.csv
 
 Dev environment:
