@@ -11,25 +11,31 @@ and collates them to a single matrix.
 - [x] 50 Greatest players in the NBA
 - [x] Hall of Fame
 
-### NBA seasons
+### Per NBA season
 - [ ] NBA Championship titles
 - [x] NBA Most Valuable Player (MVP)
-- [x] NBA Finals MVPs
+- [x] NBA Finals MVP
 - [x] All-NBA Team selections
 - [ ] All-Defensive Team selections
 - [ ] All-Rookie Team selections
-- [x] NBA All-Star MVPs
+- [x] NBA All-Star MVP
 - [ ] NBA All-Star selections
 - [ ] NBA Rookie of the Year (ROY)
-- [ ] NBA Defensive Player of the year (DPOY)
+- [ ] NBA Defensive Player of the Year (DPOY)
 - [ ] NBA Most Improved Player (MIP)
-- [ ] NBA 6th Man
-- [ ] NBA league leaders for PTS, AST, REB, STL, BLK, PPG, APG, RPG, SPG, FG%, 3PT%, FT% for all-time, season, game
+- [ ] NBA Sixth Man of the Year
+- [ ] NBA league leaders in PTS, AST, REB, STL, BLK, PPG, APG, RPG, SPG, BPG, FG%, 3PT%, FT%
 
-### ABA seasons
+### NBA All-time
+- [ ] NBA league leaders in PTS, AST, REB, STL, BLK, PPG, APG, RPG, SPG, BPG, FG%, 3PT%, FT%
+
+### Per NBA game
+- [ ] NBA league leaders in PTS, AST, REB, STL, BLK, FG%, 3PT%, FT%
+
+### Per ABA season
 - [ ] All-ABA Team selections
 - [ ] ABA MVPs
-- [ ] ABA Playoff MVPs
+- [ ] ABA Playoff MVP
 
 ### BAA, NBL, other leagues
 
