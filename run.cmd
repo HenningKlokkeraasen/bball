@@ -24,6 +24,6 @@ call tsc
 call start chrome "file:///E:/Mine dokumenter/GitHub/bball/index.html"
 
 @rem Start web server
-call node src/server/server.js
+call node server/server.js
 
 @rem exit

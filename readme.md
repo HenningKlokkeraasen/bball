@@ -47,7 +47,7 @@ see run.cmd for list of handlebars templates to precompile
 (from root folder)
 
 How to run:
-> node src/server/server.js
+> node server/server.js
 
 How to view
 - open index.html in a browser

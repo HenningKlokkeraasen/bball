@@ -26,16 +26,16 @@ module.exports = {
         });
     },
 
-    saveInCache: function(key, object) {
+    storeInCache: function(key, object) {
         return new Promise(function(resolve, reject) {
             myCache.set(key, object, function(err, success) {
                 if (err)
                     reject(err);
                     
                 if (success)
-                    console.log(`cached data with key ${key} in cache`);
+                    console.log(`stored data with key ${key} in cache`);
                 else
-                    console.error(`could not save data with key ${key} in cache`);
+                    console.error(`could not store data with key ${key} in cache`);
 
                 resolve(object);
             });

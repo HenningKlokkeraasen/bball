@@ -12,7 +12,6 @@ module.exports = {
                         console.log(`data with key ${cacheKey} is not in cache`);
                         utils.readFile(filePath)
                             .then(function(csvData) {
-                                // console.log(csvData);
                                 return utils.parseCsv(csvData);
                             })
                             .then(function(parsedData) {
@@ -22,7 +21,7 @@ module.exports = {
                                 return JSON.stringify(jsonData);
                             })
                             .then(function(stringified) {
-                                return utils.saveInCache(cacheKey, stringified);
+                                return utils.storeInCache(cacheKey, stringified);
                             })
                             .then(function(stringified) {
                                 resolve(stringified);
