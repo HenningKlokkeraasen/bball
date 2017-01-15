@@ -53,4 +53,9 @@ var accolades = [
 //         wikipediaPageUrlSegment : 'List_of_NBA_champions',
 //         extractor: nbaChampionshipExtractor
 //     }
+    {
+        heading: 'Combined list of accolades for all players',
+        tabHeading: 'Combined',
+        urlSegment: 'api/combined'
+    }
 ];

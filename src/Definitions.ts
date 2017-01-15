@@ -50,6 +50,6 @@ interface Accolade {
     tabHeading: string,
     heading: string,
     bodyText?: string,
-    sourceUrl: string,
+    sourceUrl?: string,
     urlSegment: string
 }
