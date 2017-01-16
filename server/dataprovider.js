@@ -1,7 +1,7 @@
 const utils = require('./utils.js');
 
 module.exports = {
-    get: function(cacheKey, filePath, mapToJson) {
+    get: function(cacheKey, filePath, mapToJson, additionalDataForMapper) {
         return new Promise(function(resolve, reject) {
             utils.getFromCache(cacheKey)
                 .then(function(cachedData) {
@@ -15,7 +15,7 @@ module.exports = {
                                 return utils.parseCsv(csvData);
                             })
                             .then(function(parsedData) {
-                                return mapToJson(parsedData);
+                                return mapToJson(parsedData, additionalDataForMapper);
                             })
                             .then(function(jsonData) {
                                 return JSON.stringify(jsonData);

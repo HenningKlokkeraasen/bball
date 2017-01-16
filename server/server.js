@@ -9,6 +9,7 @@ const fiftygreatest = require('./mappers/50greatest.js');
 const dreamteam = require('./mappers/dreamteam.js');
 const halloffame = require('./mappers/halloffame.js');
 const allnbaabateams = require('./mappers/allnbaabateams.js');
+const nbachampions = require('./mappers/nbachampions.js');
 
 const combiner = require('./utils/bballplayerarrayjoiner');
 
@@ -52,7 +53,26 @@ dispatcher.onGet('/api/combined', function(req, res) {
             return200(res, result);
         })
         .catch(err => return500(res, err));
-})
+});
+
+dispatcher.onGet('/api/nbachampions', function(req, res) {
+    fs = require('fs');
+    path = require("path");
+    var p = "server/data/nbachampionteams/";
+    fs.readdir(p, function (err, files) {
+        if (err) {
+            throw err;
+        }
+
+        Promise.all(files.map(r => dataProvider.get(`nbachampionteams_${r}`, `server/data/nbachampionteams/${r}`, nbachampions.mapToJson, r.substring(4, 8))))
+            .then(function(resultArray) {
+                var combined = nbachampions.combine(resultArray);
+                var result = JSON.stringify(combined);
+                return200(res, result);
+            })
+            .catch(err => return500(res, err));
+    });
+});
 
 function return200(res, data) {
     res.setHeader('Access-Control-Allow-Origin', '*');

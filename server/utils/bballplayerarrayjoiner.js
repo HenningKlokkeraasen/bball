@@ -2,7 +2,7 @@ const bballplayerfactory = require('./bballplayerfactory.js');
 const combinedscorecalculator = require('./combinedscorecalculator.js');
 
 var self = module.exports = {
-    combine(bunchOfPlayers) {
+    combine: function(bunchOfPlayers) {
         var combinedPlayers = [];
         bunchOfPlayers.forEach(function(stringified) {
             // TODO get before JSON.stringify in dataProvider to avoid ser-deser-ser

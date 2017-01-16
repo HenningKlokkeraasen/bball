@@ -58,6 +58,7 @@ Data sources (download csv to \data\):
 - http://www.basketball-reference.com/awards/hof.html -> http://www.convertcsv.com/html-table-to-csv.htm -> halloffame.csv
 - http://www.basketball-reference.com/awards/all_league.html -> allnbaabateams.csv
 - http://www.basketball-reference.com/olympics/teams/USA/1992 -> olympicteams/usa1992.csv
+- http://www.basketball-reference.com/playoffs/ -> each champion page -> roster -> PHW_1947.csv etc
 
 Dev environment:
 - See setup-dev-env.cmd (Windows)

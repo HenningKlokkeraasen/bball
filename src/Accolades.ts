@@ -56,6 +56,7 @@ var accolades = [
     {
         heading: 'Combined list of accolades for all players',
         tabHeading: 'Combined',
-        urlSegment: 'api/combined'
+        urlSegment: 'api/combined',
+        sourceUrl: 'http://www.basketball-reference.com/'
     }
 ];
