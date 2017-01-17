@@ -10,6 +10,7 @@ const dreamteam = require('./mappers/dreamteam.js');
 const halloffame = require('./mappers/halloffame.js');
 const allnbaabateams = require('./mappers/allnbaabateams.js');
 const nbachampions = require('./mappers/nbachampions.js');
+const nbaallstarteams = require('./mappers/nbaallstarteams.js');
 
 const combiner = require('./utils/bballplayerarrayjoiner');
 
@@ -33,7 +34,8 @@ const accoladesResources = [
 accoladesResources.forEach(r => setupAccoladeResource(r.resource, r.mapper));
 
 const teamsResources = [
-    { resource: 'nbachampionteams', mapper: nbachampions.mapToJson, combiner: nbachampions.combine }
+    { resource: 'nbachampionshipteams', mapper: nbachampions.mapToJson, combiner: nbachampions.combine },
+    { resource: 'nbaallstarteams', mapper: nbaallstarteams.mapToJson, combiner: nbaallstarteams.combine }
 ];
 
 teamsResources.forEach(r => setupTeamResource(r.resource, r.mapper, r.combiner));
@@ -53,7 +55,7 @@ function setupAccoladeResource(resource, mapToJson) {
 
 function setupTeamResource(resource, mapToJson, combine) {
     dispatcher.onGet(`/api/${resource}`, function(req, res) {
-        dataProvider.getTeams(resource, nbachampions.mapToJson, nbachampions.combine)
+        dataProvider.getTeams(resource, mapToJson, combine)
         .then(data => return200(res, data))
         .catch(err => return500(res, err));
     });

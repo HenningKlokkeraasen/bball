@@ -35,24 +35,24 @@ var accolades = [
         urlSegment: 'api/nbaasgmvps',
         sourceUrl: 'http://www.basketball-reference.com/awards/all_star_mvp.html'
     },
-//     {
-//         heading: 'NBA All-Star',
-//         tabHeading: 'NBA All-Star',
-//         wikipediaPageUrlSegment : 'List_of_NBA_All-Stars',
-//         extractor: asgMapper
-//     },
+    {
+        heading: 'NBA All-Star',
+        tabHeading: 'NBA All-Star',
+        urlSegment: 'api/nbaallstarteams',
+        sourceUrl: 'http://www.basketball-reference.com/allstar/'
+    },
     {
         heading: 'All-NBA Team',
         tabHeading: 'All-NBA Team',
         urlSegment: 'api/allnbaabateams',
         sourceUrl: 'http://www.basketball-reference.com/awards/all_league.html'
     },
-//     {
-//         heading: 'NBA Championships',
-//         tabHeading: 'NBA Championships',
-//         wikipediaPageUrlSegment : 'List_of_NBA_champions',
-//         extractor: nbaChampionshipExtractor
-//     }
+    {
+        heading: 'NBA Championships',
+        tabHeading: 'NBA Championships',
+        urlSegment: 'api/nbachampionshipteams',
+        sourceUrl: 'http://www.basketball-reference.com/playoffs/'
+    },
     {
         heading: 'Combined list of accolades for all players',
         tabHeading: 'Combined',
