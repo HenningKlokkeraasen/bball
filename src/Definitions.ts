@@ -3,7 +3,7 @@ interface BballPlayer {
     name: string;
     position?: string;
 
-    isOnFiftyGreatesList?: boolean;
+    isOnFiftyGreatestList?: boolean;
     
     isOnDreamTeam?: boolean;
 
@@ -11,10 +11,10 @@ interface BballPlayer {
     mvpSeasons?: Array<string>;
 
     numberOfTimesFinalsMvp?: number;
-    finalsMvpYears?: Array<number>;
+    finalsMvpSeasons?: Array<string>;
 
     numberOfTimesAllStarMvp?: number;
-    allStarMvpYears?: Array<number>;
+    allStarMvpSeasons?: Array<number>;
 
     yearInductedInHof?: number;
 
@@ -25,6 +25,10 @@ interface BballPlayer {
     numberOfTimesAllNbaFirstTeam?: number;
     numberOfTimesAllNbaSecondTeam?: number;
     numberOfTimesAllNbaThirdTeam?: number;
+
+    allNbaFirstTeamSeasons?: Array<string>;
+    allNbaSecondTeamSeasons?: Array<string>;
+    allNbaThirdTeamSeasons?: Array<string>;
     
     aliases?: string;
     
@@ -46,11 +50,6 @@ interface Accolade {
     tabHeading: string,
     heading: string,
     bodyText?: string,
-    wikipediaPageUrlSegment : string,
-    extractor: IWikipediaExtractor
-}
-
-interface IWikipediaExtractor {
-    extractBballPlayerArray(content: string);
-    // extractBballPlayerArray: () => Array<BballPlayer>;
+    sourceUrl?: string,
+    urlSegment: string
 }
