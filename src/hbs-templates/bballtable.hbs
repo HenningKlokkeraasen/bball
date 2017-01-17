@@ -37,9 +37,12 @@
             <td>{{aliases}}</td>
             <td>{{position}}</td>
             <td {{#if isOnDreamTeam}} class="dreamTeam" {{/if}}>{{#if isOnDreamTeam}}Yes{{/if}}</td>
-            <td {{#if isOnFiftyGreatesList}} class="fiftyGreatest" {{/if}}>{{#if isOnFiftyGreatesList}}Yes{{/if}}</td>
+            <td {{#if isOnFiftyGreatestList}} class="fiftyGreatest" {{/if}}>{{#if isOnFiftyGreatestList}}Yes{{/if}}</td>
 
-            <td>{{numberOfNbaChampionships}}</td>
+            <td {{#if numberOfNbaChampionships}} 
+                    class="nbaChampionship" 
+                    title="Years: {{#each nbaChampionshipYears}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfNbaChampionships}}</td>
 
             <td {{#if numberOfTimesMvp}} 
                     class="mvp" 
@@ -47,11 +50,11 @@
                     {{/if}}>{{numberOfTimesMvp}}</td>
             <td {{#if numberOfTimesFinalsMvp}} 
                     class="finalsMvp" 
-                    title="Years: {{#each finalsMvpYears}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    title="Seasons: {{#each finalsMvpSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
                     {{/if}}>{{numberOfTimesFinalsMvp}}</td>
             <td {{#if numberOfTimesAllStarMvp}} 
                     class="allStarMvp" 
-                    title="Years: {{#each allStarMvpYears}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    title="Seasons: {{#each allStarMvpSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
                     {{/if}}>{{numberOfTimesAllStarMvp}}</td>
             <td {{#if allStarAppearanceCount}} 
                     class="asg" 
@@ -60,9 +63,18 @@
                     {{/if}}>
                 {{allStarAppearanceCount}}
             </td>
-            <td {{#if numberOfTimesAllNbaFirstTeam}} class="allNbaTeam"{{/if}}>{{numberOfTimesAllNbaFirstTeam}}</td>
-            <td {{#if numberOfTimesAllNbaSecondTeam}} class="allNbaTeam"{{/if}}>{{numberOfTimesAllNbaSecondTeam}}</td>
-            <td {{#if numberOfTimesAllNbaThirdTeam}} class="allNbaTeam"{{/if}}>{{numberOfTimesAllNbaThirdTeam}}</td>
+            <td {{#if numberOfTimesAllNbaFirstTeam}} 
+                    class="allNbaTeam"
+                    title="Seasons: {{#each allNbaFirstTeamSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesAllNbaFirstTeam}}</td>
+            <td {{#if numberOfTimesAllNbaSecondTeam}} 
+                    class="allNbaTeam"
+                    title="Seasons: {{#each allNbaSecondTeamSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesAllNbaSecondTeam}}</td>
+            <td {{#if numberOfTimesAllNbaThirdTeam}} 
+                    class="allNbaTeam"
+                    title="Seasons: {{#each allNbaaThirdTeamSeasons}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfTimesAllNbaThirdTeam}}</td>
             <td {{#if currentlyInNba}} class="currentlyInNba" {{/if}}
                 {{#if yearInductedInHof}} class="hof" {{/if}}>
                 {{#if currentlyInNba}}Currently in NBA{{/if}}

@@ -7,28 +7,9 @@
     "files": [
         "src/Utilities.ts",
         
-        "src/WikipediaIntegration/WikipediaIntegrator.ts",
-        "src/WikipediaIntegration/Extractors/FiftyGreatestExtractor.ts",
-        "src/WikipediaIntegration/Extractors/DreamTeamExtractor.ts",
-        "src/WikipediaIntegration/Extractors/HallOfFameExtractor.ts",
-        "src/WikipediaIntegration/Extractors/MvpExtractor.ts",
-        "src/WikipediaIntegration/Extractors/FinalsMvpExtractor.ts",
-        "src/WikipediaIntegration/Extractors/AllStarMvpExtractor.ts",
-        "src/WikipediaIntegration/Extractors/AllStarExtractor.ts",
-        "src/WikipediaIntegration/Extractors/AllNbaTeamExtractor.ts",
-        "src/WikipediaIntegration/Extractors/ExtractorHelper.ts",
-        
-        "src/WikipediaIntegration/Extractors/NbaChampionship/NbaChampionshipExtractor.ts",
-        "src/WikipediaIntegration/Extractors/NbaChampionship/NbaChampionshipPlayerExtractor.ts",
-        "src/WikipediaIntegration/Extractors/NbaChampionship/NbaChampionshipTeamExtractor.ts",
-        "src/WikipediaIntegration/Extractors/NbaChampionship/RosterTableExtractor.ts",
-        "src/WikipediaIntegration/Extractors/NbaChampionship/RosterNavboxExtractor.ts",
-        "src/WikipediaIntegration/Extractors/NbaChampionship/DepthChartExtractor.ts",
-
         "src/Accolades.ts",
 
         "src/BballPlayerArrayJoiner.ts",
-        "src/BballAliasFinder.ts",
         "src/BballPlayerFactory.ts",
 
         "src/Ranking/CombinedScoreCalculator.ts",
