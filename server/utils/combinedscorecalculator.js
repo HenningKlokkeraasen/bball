@@ -43,7 +43,7 @@ var self = module.exports = {
         FinalsMvp: 100,
 
         AllNbaFirst: 100,
-        AllNbaSecon: 75,
+        AllNbaSecond: 75,
         AllNbaThird: 50,
         
         AllStarMvp: 50,
