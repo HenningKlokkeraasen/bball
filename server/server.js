@@ -20,7 +20,7 @@ http.createServer(handleRequest)
 
 console.log('Web server listening on localhost:1337');
 
-const resources = [
+const accoladesResources = [
     { resource: 'nbamvps', mapper: nbamvps.mapToJson },
     { resource: 'nbafinalsmvps', mapper: nbafinalsmvps.mapToJson },
     { resource: 'nbaasgmvps', mapper: nbaasgmvps.mapToJson },
@@ -30,48 +30,39 @@ const resources = [
     { resource: 'allnbaabateams', mapper: allnbaabateams.mapToJson }
 ];
 
-resources.forEach(r => setupApi(r.resource, r.mapper));
+accoladesResources.forEach(r => setupAccoladeResource(r.resource, r.mapper));
+
+const teamsResources = [
+    { resource: 'nbachampionteams', mapper: nbachampions.mapToJson, combiner: nbachampions.combine }
+];
+
+teamsResources.forEach(r => setupTeamResource(r.resource, r.mapper, r.combiner));
 
 function handleRequest(req, res) {
     console.log(`Incoming ${req.url}`);
     dispatcher.dispatch(req, res);
 }
 
-function setupApi(resource, mapToJson) {
+function setupAccoladeResource(resource, mapToJson) {
     dispatcher.onGet(`/api/${resource}`, function(req, res) {
-        dataProvider.get(`${resource}`, `server/data/${resource}.csv`, mapToJson)
+        dataProvider.getResource(`${resource}`, `server/data/${resource}.csv`, mapToJson)
             .then(data => return200(res, data))
             .catch(err => return500(res, err));
     });
 }
 
-dispatcher.onGet('/api/combined', function(req, res) {
-    Promise.all(resources.map(r => dataProvider.get(`${r.resource}`, `server/data/${r.resource}.csv`, r.mapper)))
-        .then(function(resultArray) {
-            var combined = combiner.combine(resultArray);
-            var result = JSON.stringify(combined);
-            return200(res, result);
-        })
+function setupTeamResource(resource, mapToJson, combine) {
+    dispatcher.onGet(`/api/${resource}`, function(req, res) {
+        dataProvider.getTeams(resource, nbachampions.mapToJson, nbachampions.combine)
+        .then(data => return200(res, data))
         .catch(err => return500(res, err));
-});
-
-dispatcher.onGet('/api/nbachampions', function(req, res) {
-    fs = require('fs');
-    path = require("path");
-    var p = "server/data/nbachampionteams/";
-    fs.readdir(p, function (err, files) {
-        if (err) {
-            throw err;
-        }
-
-        Promise.all(files.map(r => dataProvider.get(`nbachampionteams_${r}`, `server/data/nbachampionteams/${r}`, nbachampions.mapToJson, r.substring(4, 8))))
-            .then(function(resultArray) {
-                var combined = nbachampions.combine(resultArray);
-                var result = JSON.stringify(combined);
-                return200(res, result);
-            })
-            .catch(err => return500(res, err));
     });
+}
+
+dispatcher.onGet('/api/combined', function(req, res) {
+    dataProvider.getResources('combined', accoladesResources, teamsResources, combiner.combine)
+        .then(data => return200(res, data))
+        .catch(err => return500(res, err));
 });
 
 function return200(res, data) {

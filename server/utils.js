@@ -15,6 +15,16 @@ module.exports = {
         });
     },
 
+    enumerateFiles: function(directory) {
+        return new Promise(function(resolve, reject) {
+            fs.readdir(directory, function (err, files) {
+                if (err)
+                    reject(err);
+                resolve(files);
+            });
+        });
+    },
+
     parseCsv: function(input) {
         // console.log(input);
         return new Promise(function(resolve, reject) {
@@ -51,5 +61,7 @@ module.exports = {
                 resolve(value);
             });
         });
-    }
+    },
+
+    flatten: (acc, cur) => acc.concat(cur)
 }

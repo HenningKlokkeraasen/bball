@@ -39,7 +39,10 @@
             <td {{#if isOnDreamTeam}} class="dreamTeam" {{/if}}>{{#if isOnDreamTeam}}Yes{{/if}}</td>
             <td {{#if isOnFiftyGreatestList}} class="fiftyGreatest" {{/if}}>{{#if isOnFiftyGreatestList}}Yes{{/if}}</td>
 
-            <td>{{numberOfNbaChampionships}}</td>
+            <td {{#if numberOfNbaChampionships}} 
+                    class="nbaChampionship" 
+                    title="Years: {{#each nbaChampionshipYears}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}"
+                    {{/if}}>{{numberOfNbaChampionships}}</td>
 
             <td {{#if numberOfTimesMvp}} 
                     class="mvp" 

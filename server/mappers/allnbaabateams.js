@@ -1,4 +1,5 @@
 const mappingUtils = require('./mappingUtils.js');
+const utils = require('./../utils.js');
 
 var self = module.exports = {
 
@@ -8,7 +9,7 @@ var self = module.exports = {
     //     ...
     // ]
     mapToJson: function(parsedCsv) {
-        var players = parsedCsv.slice(self.numberOfHeaderRows).map(self.mapToPlayers).reduce(self.flatten, []);
+        var players = parsedCsv.slice(self.numberOfHeaderRows).map(self.mapToPlayers).reduce(utils.flatten, []);
         return self.distinctObjects(players);
     },
 
@@ -89,10 +90,8 @@ var self = module.exports = {
     },
 
     getPlayers: function(rowArr) {
-        return rowArr.slice(3, 8).map(self.getPlayerArray).reduce(self.flatten, []);
+        return rowArr.slice(3, 8).map(self.getPlayerArray).reduce(utils.flatten, []);
     },
-
-    flatten: (acc, cur) => acc.concat(cur),
 
     getPlayerArray: function(cell) {
         if (cell.indexOf('(T)') > -1) {

@@ -25,9 +25,7 @@ var self = module.exports = {
 
     combine: function(bunchOfPlayers) {
         var combinedPlayers = [];
-        bunchOfPlayers.forEach(function(stringified) {
-            // TODO get before JSON.stringify in dataProvider to avoid ser-deser-ser
-            var arrayOfPlayers = JSON.parse(stringified);
+        bunchOfPlayers.forEach(function(arrayOfPlayers) {
             arrayOfPlayers.forEach(function(player) {
                 var existingPlayer = combinedPlayers.find(p => p.id === player.id);
                 if (existingPlayer === undefined)
