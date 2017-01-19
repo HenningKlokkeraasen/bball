@@ -10,6 +10,7 @@ and collates them to a single matrix.
 ### Basketball in general
 - [x] 50 Greatest players in the NBA
 - [x] Hall of Fame
+- [x] Bill Simmons Hall of Fame Pyramid
 
 ### Per NBA season
 - [x] NBA Championship titles
@@ -60,6 +61,7 @@ Data sources (download csv to \data\):
 - http://www.basketball-reference.com/olympics/teams/USA/1992 -> olympicteams/usa1992.csv
 - http://www.basketball-reference.com/playoffs/ -> each champion page -> roster -> nbachampionshipteams/PHW_1947.csv etc
 - http://www.basketball-reference.com/allstar/ -> each all-star page -> rosters -> nbaallstarteams/NBA_1951.csv etc
+- http://www.basketball-reference.com/awards/simmons_pyramid.html -> simmonshofpyramid.csv
 
 Dev environment:
 - See setup-dev-env.cmd (Windows)

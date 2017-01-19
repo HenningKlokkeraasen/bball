@@ -54,6 +54,12 @@ var accolades = [
         sourceUrl: 'http://www.basketball-reference.com/playoffs/'
     },
     {
+        heading: 'Bill Simmons Hall of Fame Pyramid',
+        tabHeading: 'Simmons Pyramid',
+        urlSegment: 'api/simmonshofpyramid',
+        sourceUrl: 'http://www.basketball-reference.com/awards/simmons_pyramid.html'
+    },
+    {
         heading: 'Combined list of accolades for all players',
         tabHeading: 'Combined',
         urlSegment: 'api/combined',
