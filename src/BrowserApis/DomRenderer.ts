@@ -20,11 +20,14 @@ class DomRenderer {
 		});
 	}
 
-	renderBballPlayerTab(heading: string, domId: string, isActive: boolean, placeholderId: string) {
+	renderBballPlayerTab(accolade: Accolade, domId: string, isActive: boolean, placeholderId: string) {
 		var html = Handlebars.templates['bballtab.hbs']({
-			heading: heading,
+			tabHeading: accolade.tabHeading,
 			isActive: isActive,
-			domId: domId
+			domId: domId,
+			urlSegment: accolade.urlSegment,
+			sourceUrl: accolade.sourceUrl,
+			heading: accolade.heading
 		});
 		document.getElementById(placeholderId).innerHTML += html;
 	}

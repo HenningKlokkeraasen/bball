@@ -9,11 +9,6 @@
         
         "src/Accolades.ts",
 
-        "src/BballPlayerArrayJoiner.ts",
-        "src/BballPlayerFactory.ts",
-
-        "src/Ranking/CombinedScoreCalculator.ts",
-
         "src/BrowserApis/DomRenderer.ts",
         "src/BrowserApis/LocalStorageIntegrator.ts",
         

@@ -1,16 +1,13 @@
 /// <reference path="Utilities.ts" />
 /// <reference path="Definitions.ts" />
-/// <reference path="BballPlayerArrayJoiner.ts" />
 /// <reference path="DataProvider.ts" />
 /// <reference path="BrowserApis/DomRenderer.ts" />
 
 class App {
     run(accolades: Array<Accolade>) {
         var self = this;
-        var promises = accolades.map(self.mapAccoladeToPromise);
-        Promise.all(promises)
-            .then(resultOfPromise => self.renderInDom(accolades, resultOfPromise))
-            .catch(console.error);
+        accolades.forEach(self.renderTab);
+        self.bindTabClick();
     }
 
     mapAccoladeToPromise(a: Accolade) {
@@ -26,26 +23,16 @@ class App {
         );
     }
 
-    renderInDom(tabs: Array<Accolade>, arrayOfArrayOfBballPlayer: Array<Array<BballPlayer>>) {
-        var self = this;
-        for (var i = 0; i < arrayOfArrayOfBballPlayer.length; i++) {
-            var safeDomId = tabs[i].urlSegment.replace('api/', '').replace('/', '-');
-            DomRenderer.prototype.renderBballPlayerTab(
-                tabs[i].tabHeading,
-                safeDomId,
-                i === 0,
-                "placeholderTabs"
-            );
-            DomRenderer.prototype.renderBballPlayerTable(
-                tabs[i].heading,
-                tabs[i].bodyText,
-                safeDomId,
-                [self.makeLink(tabs[i].sourceUrl, 'basketball-reference.com')],
-                i === 0,
-                arrayOfArrayOfBballPlayer[i],
-                "placeholderTabContent"
-            );
-        }
+    renderInDom(accolade: Accolade, arrayOfBballPlayer: Array<BballPlayer>) {
+        DomRenderer.prototype.renderBballPlayerTable(
+            accolade.heading,
+            accolade.bodyText,
+            App.prototype.generateDomId(accolade),
+            [App.prototype.makeLink(accolade.sourceUrl, 'basketball-reference.com')],
+            true,
+            arrayOfBballPlayer,
+            "placeholderTabContent"
+        );
     }
 
     makeLink(url: string, title: string) : Link  {
@@ -54,5 +41,49 @@ class App {
             title: title,
             openInNewTab: true
         };
+    }
+
+    getAccolade(e) {
+        var activatedTab = e.target;
+        var relatedTab = e.relatedTarget;
+        
+        var urlSegment = $(activatedTab).data('urlsegment');
+        var heading = $(activatedTab).data('heading');
+        var sourceurl = $(activatedTab).data('sourceurl');
+
+        var havedata = $(activatedTab).data('havedata');
+        if (havedata === 'true') {
+            return;
+        }
+
+        // Trigger current tab, if not, new tab will be shown before data has arrived
+        $(relatedTab).tab('show');
+
+        var accolade = { heading: heading, sourceUrl: sourceurl, urlSegment: urlSegment };
+        App.prototype.mapAccoladeToPromise(accolade)
+            .then(function(result) {
+                $(activatedTab).data('havedata', 'true');
+                App.prototype.renderInDom(accolade, result);
+                $(activatedTab).tab('show');
+            })
+            .catch();
+    }
+
+    renderTab(a: Accolade) {
+        DomRenderer.prototype.renderBballPlayerTab(
+            a,
+            App.prototype.generateDomId(a),
+            false,
+            "placeholderTabs"
+        );
+    }
+
+    generateDomId(accolade: Accolade) {
+        return accolade.urlSegment.replace('api/', '').replace('/', '-');
+    }
+
+    bindTabClick() {
+        var self = this;
+        $('a[data-toggle="tab"]').on('shown.bs.tab', self.getAccolade);
     }
 }

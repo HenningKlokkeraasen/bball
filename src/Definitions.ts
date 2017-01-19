@@ -47,7 +47,7 @@ interface Link {
 }
 
 interface Accolade {
-    tabHeading: string,
+    tabHeading?: string,
     heading: string,
     bodyText?: string,
     sourceUrl?: string,
