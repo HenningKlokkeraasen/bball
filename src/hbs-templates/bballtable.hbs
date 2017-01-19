@@ -7,7 +7,7 @@
         <tr>
             <th colspan="11"></th>
             <th colspan="3">All-NBA Team count</th>
-            <th colspan="2"></th>
+            <th colspan="3"></th>
         </tr>
         <tr>
             <th>#</th>
@@ -16,7 +16,7 @@
             <th>Position</th>
             <th>Dream Team</th>
             <th>50 Greatest</th>
-            <th>NBA rings</th>
+            <th>NBA titles</th>
             <th>MVP count</th>
             <th>Finals MVP count</th>
             <th>All-Star Game MVP count</th>
@@ -24,8 +24,10 @@
             <th>1st</th>
             <th>2nd</th>
             <th>3rd</th>
-            <th>Currently in NBA
-                or HOF year</th>
+            <th>
+                {{!--Currently in NBA or --}}
+                HOF year</th>
+            <th>Simmons HOF Pyramid</th>
             <th>Combined Score</th>
         </tr>
         </thead>
@@ -79,6 +81,7 @@
                 {{#if yearInductedInHof}} class="hof" {{/if}}>
                 {{#if currentlyInNba}}Currently in NBA{{/if}}
                 {{#if yearInductedInHof}}HOF: {{yearInductedInHof}}{{/if}}</td>
+            <td>{{simmonsHofPyramidRank}}</td>
             <td>{{combinedScore}}</td>
         </tr>
         {{/each}}

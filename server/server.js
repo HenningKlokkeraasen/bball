@@ -11,6 +11,7 @@ const halloffame = require('./mappers/halloffame.js');
 const allnbaabateams = require('./mappers/allnbaabateams.js');
 const nbachampions = require('./mappers/nbachampions.js');
 const nbaallstarteams = require('./mappers/nbaallstarteams.js');
+const simmonshofpyramid = require('./mappers/simmonshofpyramid.js');
 
 const combiner = require('./utils/bballplayerarrayjoiner');
 
@@ -28,7 +29,8 @@ const accoladesResources = [
     { resource: '50greatest', mapper: fiftygreatest.mapToJson },
     { resource: 'olympicteams/usa1992', mapper: dreamteam.mapToJson },
     { resource: 'halloffame', mapper: halloffame.mapToJson },
-    { resource: 'allnbaabateams', mapper: allnbaabateams.mapToJson }
+    { resource: 'allnbaabateams', mapper: allnbaabateams.mapToJson },
+    { resource: 'simmonshofpyramid', mapper: simmonshofpyramid.mapToJson }
 ];
 
 accoladesResources.forEach(r => setupAccoladeResource(r.resource, r.mapper));
