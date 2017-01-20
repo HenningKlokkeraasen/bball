@@ -63,21 +63,17 @@ Data sources (download csv to \data\):
 - http://www.basketball-reference.com/allstar/ -> each all-star page -> rosters -> nbaallstarteams/NBA_1951.csv etc
 - http://www.basketball-reference.com/awards/simmons_pyramid.html -> simmonshofpyramid.csv
 
-Dev environment:
+### Dev environment
 - See setup-dev-env.cmd (Windows)
 
-How to compile:
-> tsc
+### Install
+ - See install.cmd
 
-see run.cmd for list of handlebars templates to precompile
+### Compile
+- See compile.cmd
 
-(from root folder)
+### Start node.js web server
+- See startserver.cmd
 
-How to run:
-> node server/server.js
-
-How to view
+### Run
 - open index.html in a browser
-
-OR: How to compile, run and view, automated (on Windows)
-> run.cmd
