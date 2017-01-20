@@ -23,7 +23,6 @@ app.listen(1337, function () {
 });
 
 app.use(express.static('public'));
-app.use(express.static('css'));
 app.use(express.static('node_modules'));
 
 app.get('/', function (req, res) {
