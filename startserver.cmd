@@ -1,1 +1,1 @@
-call node server/server.js
+call node server.js

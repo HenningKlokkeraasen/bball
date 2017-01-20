@@ -76,4 +76,4 @@ Data sources (download csv to \data\):
 - See startserver.cmd
 
 ### Run
-- open index.html in a browser
+- http://localhost:1337/
