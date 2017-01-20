@@ -1,26 +1,34 @@
 const http = require('http');
-const HttpDispatcher = require('httpdispatcher');
+const path = require('path');
+const express = require('express');
 
-const dataProvider = require('./dataprovider.js');
-const nbamvps = require('./mappers/nbamvps.js');
-const nbafinalsmvps = require('./mappers/nbafinalsmvps.js');
-const nbaasgmvps = require('./mappers/nbaasgmvps.js');
-const fiftygreatest = require('./mappers/50greatest.js');
-const dreamteam = require('./mappers/dreamteam.js');
-const halloffame = require('./mappers/halloffame.js');
-const allnbaabateams = require('./mappers/allnbaabateams.js');
-const nbachampions = require('./mappers/nbachampions.js');
-const nbaallstarteams = require('./mappers/nbaallstarteams.js');
-const simmonshofpyramid = require('./mappers/simmonshofpyramid.js');
+const dataProvider = require('./server/dataprovider.js');
+const nbamvps = require('./server/mappers/nbamvps.js');
+const nbafinalsmvps = require('./server/mappers/nbafinalsmvps.js');
+const nbaasgmvps = require('./server/mappers/nbaasgmvps.js');
+const fiftygreatest = require('./server/mappers/50greatest.js');
+const dreamteam = require('./server/mappers/dreamteam.js');
+const halloffame = require('./server/mappers/halloffame.js');
+const allnbaabateams = require('./server/mappers/allnbaabateams.js');
+const nbachampions = require('./server/mappers/nbachampions.js');
+const nbaallstarteams = require('./server/mappers/nbaallstarteams.js');
+const simmonshofpyramid = require('./server/mappers/simmonshofpyramid.js');
 
-const combiner = require('./utils/bballplayerarrayjoiner');
+const combiner = require('./server/utils/bballplayerarrayjoiner');
 
-const dispatcher = new HttpDispatcher();
+const app = express();
 
-http.createServer(handleRequest)
-    .listen(1337);
+app.listen(1337, function () {
+    console.log('Web server listening on localhost:1337');
+});
 
-console.log('Web server listening on localhost:1337');
+app.use(express.static('public'));
+app.use(express.static('css'));
+app.use(express.static('node_modules'));
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 
 const accoladesResources = [
     { resource: 'nbamvps', mapper: nbamvps.mapToJson },
@@ -42,13 +50,8 @@ const teamsResources = [
 
 teamsResources.forEach(r => setupTeamResource(r.resource, r.mapper, r.combiner));
 
-function handleRequest(req, res) {
-    console.log(`Incoming ${req.url}`);
-    dispatcher.dispatch(req, res);
-}
-
 function setupAccoladeResource(resource, mapToJson) {
-    dispatcher.onGet(`/api/${resource}`, function(req, res) {
+    app.get(`/api/${resource}`, function(req, res) {
         dataProvider.getResource(`${resource}`, `server/data/${resource}.csv`, mapToJson)
             .then(data => return200(res, data))
             .catch(err => return500(res, err));
@@ -56,30 +59,24 @@ function setupAccoladeResource(resource, mapToJson) {
 }
 
 function setupTeamResource(resource, mapToJson, combine) {
-    dispatcher.onGet(`/api/${resource}`, function(req, res) {
+    app.get(`/api/${resource}`, function(req, res) {
         dataProvider.getTeams(resource, mapToJson, combine)
         .then(data => return200(res, data))
         .catch(err => return500(res, err));
     });
 }
 
-dispatcher.onGet('/api/combined', function(req, res) {
+app.get('/api/combined', function(req, res) {
     dataProvider.getResources('combined', accoladesResources, teamsResources, combiner.combine)
         .then(data => return200(res, data))
         .catch(err => return500(res, err));
 });
 
 function return200(res, data) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.write(data);
-    res.end();
+    res.type('json').send(data);
 }
 
 function return500(res, err) {
-    console.error(err);
-    res.writeHead(500, {'Content-Type': 'text/plain'});
-    res.write('500 Internal Server Error');
-    res.end();
+    console.error(err.stack);
+    res.status(500).send('500 Internal Server Error');
 }

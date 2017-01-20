@@ -67,7 +67,7 @@ Data sources (download csv to \data\):
 - See setup-dev-env.cmd (Windows)
 
 ### Install
- - See install.cmd
+ > npm install
 
 ### Compile
 - See compile.cmd
