@@ -13,6 +13,7 @@ const allnbaabateams = require('./server/mappers/allnbaabateams.js');
 const nbachampions = require('./server/mappers/nbachampions.js');
 const nbaallstarteams = require('./server/mappers/nbaallstarteams.js');
 const simmonshofpyramid = require('./server/mappers/simmonshofpyramid.js');
+const slam500 = require('./server/mappers/slam500.js');
 
 const combiner = require('./server/utils/bballplayerarrayjoiner');
 
@@ -37,7 +38,8 @@ const accoladesResources = [
     { resource: 'olympicteams/usa1992', mapper: dreamteam.mapToJson },
     { resource: 'halloffame', mapper: halloffame.mapToJson },
     { resource: 'allnbaabateams', mapper: allnbaabateams.mapToJson },
-    { resource: 'simmonshofpyramid', mapper: simmonshofpyramid.mapToJson }
+    { resource: 'simmonshofpyramid', mapper: simmonshofpyramid.mapToJson },
+    { resource: 'slam500', mapper: slam500.mapToJson }
 ];
 
 accoladesResources.forEach(r => setupAccoladeResource(r.resource, r.mapper));

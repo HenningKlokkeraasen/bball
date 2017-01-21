@@ -60,6 +60,12 @@ var accolades = [
         sourceUrl: 'http://www.basketball-reference.com/awards/simmons_pyramid.html'
     },
     {
+        heading: 'SLAM 500 Greatest NBA Players of All Time',
+        tabHeading: 'SLAM 500',
+        urlSegment: 'api/slam500',
+        sourceUrl: 'http://www.basketball-reference.com/awards/slam_500_greatest.html'
+    },
+    {
         heading: 'Combined list of accolades for all players',
         tabHeading: 'Combined',
         urlSegment: 'api/combined',

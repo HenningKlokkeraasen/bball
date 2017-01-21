@@ -20,6 +20,8 @@ var self = module.exports = {
             to.currentlyInNba = from.currentlyInNba;
         if (from.simmonsHofPyramidRank)
             to.simmonsHofPyramidRank = from.simmonsHofPyramidRank;
+        if (from.slam500Rank)
+            to.slam500Rank = from.slam500Rank;
         self.addNbaChampionships(from, to);
         self.setMvpData(from, to);
         self.setFinalsMvpData(from, to);

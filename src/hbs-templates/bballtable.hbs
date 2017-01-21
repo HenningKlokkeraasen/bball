@@ -7,7 +7,7 @@
         <tr>
             <th colspan="11"></th>
             <th colspan="3">All-NBA Team count</th>
-            <th colspan="3"></th>
+            <th colspan="4"></th>
         </tr>
         <tr>
             <th>#</th>
@@ -28,6 +28,7 @@
                 {{!--Currently in NBA or --}}
                 HOF year</th>
             <th>Simmons HOF Pyramid</th>
+            <th>SLAM 500</th>
             <th>Combined Score</th>
         </tr>
         </thead>
@@ -82,6 +83,7 @@
                 {{#if currentlyInNba}}Currently in NBA{{/if}}
                 {{#if yearInductedInHof}}HOF: {{yearInductedInHof}}{{/if}}</td>
             <td>{{simmonsHofPyramidRank}}</td>
+            <td>{{slam500Rank}}</td>
             <td>{{combinedScore}}</td>
         </tr>
         {{/each}}
