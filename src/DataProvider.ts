@@ -7,7 +7,7 @@ class DataProvider {
      * getFromRemote: a function that is Promise that returns a raw string.
      * extractor: a class that has a function that maps the raw string to an array of type T.
     */
-    getFromLocalStorageOrFetchFromRemote<T>(key: string, getFromRemote: (key: string) => Promise<string>) {
+    getFromLocalStorageOrFetchFromRemote<T>(key: string, getFromRemote: (key: string) => Promise<T>) {
         var self = this;
         return new Promise<T>(function(resolve, reject) {
             // LocalStorageIntegrator.prototype.getFromStorage(key)

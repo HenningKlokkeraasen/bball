@@ -1,4 +1,5 @@
-/// <reference path="../../ts-dts/handlebars.d.ts" />
+/// <reference path="../../node_modules/@types/handlebars.d.ts" />
+/// <reference path="../../node_modules/@types/jquery.datatables.d.ts" />
 /// <reference path="../Definitions.ts" />
 
 class DomRenderer {

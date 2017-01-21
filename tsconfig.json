@@ -3,16 +3,5 @@
         "removeComments": true,
         "out": "public/app.js",
         "lib": ["dom", "es2015.promise", "es5"]
-    },
-    "files": [
-        "src/Utilities.ts",
-        
-        "src/Accolades.ts",
-
-        "src/BrowserApis/DomRenderer.ts",
-        "src/BrowserApis/LocalStorageIntegrator.ts",
-        
-        "src/App.ts",
-        "src/Startup.ts"
-    ]
+    }
 }

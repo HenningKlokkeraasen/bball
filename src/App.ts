@@ -2,6 +2,7 @@
 /// <reference path="Definitions.ts" />
 /// <reference path="DataProvider.ts" />
 /// <reference path="BrowserApis/DomRenderer.ts" />
+/// <reference path="../node_modules/@types/bootstrap.d.ts" />
 
 class App {
     run(accolades: Array<Accolade>) {
@@ -14,7 +15,7 @@ class App {
         return DataProvider.prototype.getFromLocalStorageOrFetchFromRemote<Array<BballPlayer>>(
             a.urlSegment, 
             function(key) {
-                return new Promise<string>(function(resolve, reject) {
+                return new Promise<Array<BballPlayer>>(function(resolve, reject) {
                     JsonGetter.prototype.getJson(`http://localhost:1337/${key}`)
                         .then(resolve)
                         .catch(reject);
