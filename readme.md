@@ -65,17 +65,17 @@ Data sources (download csv to \data\):
 - http://www.basketball-reference.com/awards/simmons_pyramid.html -> simmonshofpyramid.csv
 - http://www.basketball-reference.com/awards/slam_500_greatest.html -> slam500.csv
 
-### Dev environment
-- See setup-dev-env.cmd (Windows)
+### Dev environment (Windows)
+> setup-dev-env.cmd
 
 ### Install
 > npm install
 
-### Compile
-- See compile.cmd
+### Compile (Windows)
+> compile.cmd
 
 ### Start node.js web server
-> node server.js
+> npm run
 
-### Run
-- http://localhost:1337/
+### Run (Windows)
+> start chrome http://localhost:1337/

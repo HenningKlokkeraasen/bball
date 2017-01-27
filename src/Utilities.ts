@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@types/handlebars.d.ts" />
+/// <reference path="../node_modules/@types/handlebars/index.d.ts" />
 /// <reference path="Definitions.ts" />
 
 class JsonGetter {

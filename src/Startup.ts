@@ -1,5 +1,5 @@
-/// <reference path="../node_modules/@types/jquery.d.ts" />
-/// <reference path="../node_modules/@types/handlebars.d.ts" />
+/// <reference path="../node_modules/@types/jquery/index.d.ts" />
+/// <reference path="../node_modules/@types/handlebars/index.d.ts" />
 /// <reference path="Utilities.ts" />
 /// <reference path="Definitions.ts" />
 /// <reference path="Accolades.ts" />
