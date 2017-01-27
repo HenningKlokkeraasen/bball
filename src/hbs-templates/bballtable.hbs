@@ -82,8 +82,10 @@
                 {{#if yearInductedInHof}} class="hof" {{/if}}>
                 {{#if currentlyInNba}}Currently in NBA{{/if}}
                 {{#if yearInductedInHof}}HOF: {{yearInductedInHof}}{{/if}}</td>
-            <td>{{simmonsHofPyramidRank}}</td>
-            <td>{{slam500Rank}}</td>
+            <td {{#if simmonsHofPyramidRank}}data-order="{{simmonsHofPyramidRank}}"
+                {{else}}data-order="999"{{/if}}>{{simmonsHofPyramidRank}}</td>
+            <td {{#if slam500Rank}}data-order="{{slam500Rank}}"
+                {{else}}data-order="999"{{/if}}>{{slam500Rank}}</td>
             <td>{{combinedScore}}</td>
         </tr>
         {{/each}}

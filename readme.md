@@ -8,9 +8,10 @@ and collates them to a single matrix.
 
 ## Accolades and awards
 ### Basketball in general
-- [x] 50 Greatest players in the NBA
-- [x] Hall of Fame
-- [x] Bill Simmons Hall of Fame Pyramid
+- [x] Naismith Memorial Basketball Hall of Fame
+- [x] 50 Greatest Players in NBA History (1996)
+- [x] Bill Simmons Hall of Fame Pyramid (2010)
+- [x] SLAM 500 Greatest NBA Players of All Time (2011)
 
 ### Per NBA season
 - [x] NBA Championship titles
@@ -62,6 +63,7 @@ Data sources (download csv to \data\):
 - http://www.basketball-reference.com/playoffs/ -> each champion page -> roster -> nbachampionshipteams/PHW_1947.csv etc
 - http://www.basketball-reference.com/allstar/ -> each all-star page -> rosters -> nbaallstarteams/NBA_1951.csv etc
 - http://www.basketball-reference.com/awards/simmons_pyramid.html -> simmonshofpyramid.csv
+- http://www.basketball-reference.com/awards/slam_500_greatest.html -> slam500.csv
 
 ### Dev environment
 - See setup-dev-env.cmd (Windows)
