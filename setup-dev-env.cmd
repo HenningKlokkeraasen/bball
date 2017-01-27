@@ -4,7 +4,6 @@
 call choco install git
 call choco install github
 call choco install visualstudiocode
-call choco install nodejs
-call choco install npm
+call choco install nodejs.install
 
 echo done

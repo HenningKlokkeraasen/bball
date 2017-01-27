@@ -69,18 +69,13 @@ Data sources (download csv to \data\):
 - See setup-dev-env.cmd (Windows)
 
 ### Install
-* see install.cmd
-* Typescript types: https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/{TYPE}/index.d.ts -> /node_modules/@types/{TYPE}.d.ts
-    - handlebars
-    - jquery
-    - jquery.datatables
-    - bootstrap
+> npm install
 
 ### Compile
 - See compile.cmd
 
 ### Start node.js web server
-- See startserver.cmd
+> node server.js
 
 ### Run
 - http://localhost:1337/
